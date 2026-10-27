@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f7fc">
+  <meta name="description" content="TangMum — พื้นที่แลกเปลี่ยนความคิดเห็นอย่างเคารพและสร้างสรรค์">
+  <title>TangMum | ทุกความคิดมีคุณค่า</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;color:#20202b;background:#fff;font-synthesis:none}
+    *{box-sizing:border-box} [hidden]{display:none!important} html{scroll-behavior:smooth}
+    body{margin:0;min-width:280px} button,input,textarea,select{font:inherit} button{cursor:pointer} a{color:inherit}
+    button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #ada4ff;outline-offset:2px}
+    .site{width:100%;min-height:100vh;margin:0;background:#fff;border-radius:0;overflow:visible;box-shadow:none}
+    .topbar{height:72px;background:#f7f7fc;border-bottom:1px solid #eeeefa;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 clamp(16px,3.8vw,72px);position:sticky;top:0;z-index:20}
+    .brand{text-decoration:none;font-size:27px;font-weight:800;letter-spacing:-.9px;line-height:1;white-space:nowrap}.brand span{color:#7d70f8}
+    .icon-btn{border:0;background:transparent;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:13px;color:#242435;transition:background .16s,color .16s}
+    .icon-btn:hover{background:#e9e7fc}.topbar .icon-btn:last-child{justify-self:end}
+    svg.icon{width:24px;height:24px;display:inline-block;stroke:currentColor;stroke-width:2.05;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .search-panel{background:#faf9ff;padding:14px clamp(16px,3.8vw,72px);border-bottom:1px solid #eeeeff}
+    .search-panel input{width:100%;border:1px solid #dddaf3;background:#fff;padding:12px 16px;border-radius:12px}
+    main{padding:clamp(20px,2.3vw,42px) clamp(18px,3.8vw,72px) 145px}.view{max-width:none;margin:0 auto}
+    .hero{display:grid;grid-template-columns:1.4fr .9fr;gap:16px;align-items:center;background:linear-gradient(115deg,#f3f2ff,#ecebff);border-radius:22px;padding:45px 47px;min-height:320px;overflow:hidden}
+    .hero h1{font-size:clamp(29px,4vw,47px);line-height:1.23;margin:0 0 12px;letter-spacing:-1px}
+    .hero h2{font-size:clamp(19px,2.5vw,27px);color:#69677f;margin:0 0 15px}
+    .hero p{font-size:16px;color:#66667b;line-height:1.9;max-width:575px;margin:0 0 24px}
+    .primary-btn{background:#8072f7;color:white;border:0;border-radius:12px;padding:13px 22px;font-weight:700;box-shadow:0 8px 20px #8678fb30}
+    .primary-btn:hover{background:#6d5de5}.primary-btn:disabled{opacity:.6;cursor:wait}
+    .secondary-btn{background:#f1efff;color:#6559cf;border:0;border-radius:10px;padding:10px 15px;font-weight:700}
+    .hero-art{height:235px;position:relative;display:grid;place-items:center;isolation:isolate}
+    .hero-art:before{content:"";position:absolute;width:290px;height:200px;background:#dcd8ffb8;border-radius:48% 52% 47% 53%;transform:rotate(-18deg);z-index:-1}
+    .bubble{position:absolute;display:grid;place-items:center;border-radius:35px;font-size:45px;letter-spacing:5px;box-shadow:0 12px 32px #8272de20}
+    .bubble.a{left:2%;bottom:26px;width:205px;height:115px;background:#aaa0ff;color:#fff;transform:rotate(-7deg)}
+    .bubble.b{right:2%;top:25px;width:205px;height:122px;background:white;color:#8c82df;transform:rotate(8deg)}
+    .bubble:after{content:"";position:absolute;bottom:-18px;left:34px;border-top:26px solid currentColor;border-right:24px solid transparent;opacity:.2}
+    .pillars{margin-top:25px}
+    .pillar{display:flex;gap:22px;align-items:center;padding:25px 15px;border-bottom:1px solid #e6e3fd}
+    .pillar-icon{width:65px;height:65px;flex:0 0 65px;background:#efedff;color:#6255ca;border-radius:20px;display:grid;place-items:center}
+    .pillar h3{margin:0 0 5px;font-size:21px}.pillar b{font-weight:600;color:#55566d}.pillar p{color:#797989;line-height:1.75;margin:5px 0 0}
+    .feed{margin-top:42px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+    .section-title h2,.panel-title{margin:0;font-size:25px}.muted{color:#78788c}.small{font-size:13px}
+    .filter{border:1px solid #dedbea;padding:11px 13px;border-radius:11px;color:#4a4962;background:white;max-width:180px}
+    .post-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+    .post{border:1px solid #e8e6f3;border-radius:17px;padding:20px;background:#fff;box-shadow:0 5px 18px #30306008;transition:transform .12s,border-color .12s}
+    .post:hover{border-color:#beb7ff;transform:translateY(-2px)}
+    .post-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#848397;font-size:12px;margin-bottom:13px}
+    .tag{background:#f0eeff;color:#6e5de3;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    .post h3{font-size:19px;margin:0 0 10px;line-height:1.45}.post h3 button{border:0;padding:0;background:transparent;text-align:left;font-weight:750;color:#272638}
+    .post h3 button:hover{color:#7666eb}.post p{color:#727181;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 16px}
+    .post-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f0eff7;padding-top:12px;color:#7b798f;font-size:12px}
+    .star-btn{background:transparent;border:0;display:inline-flex;align-items:center;gap:5px;color:#6e6a83;padding:4px;border-radius:8px}
+    .star-btn.on{color:#6150d0;font-weight:750}.star-btn.on svg{fill:#c8c1ff}
+    .card-link{background:none;border:none;color:#6658d1;font-weight:700;padding:5px}
+    .empty{border:1px dashed #d5d0ef;border-radius:15px;background:#fcfbff;padding:35px 20px;text-align:center;color:#77748e;grid-column:1/-1}
+    .subpage{max-width:760px;margin:12px auto 0}.panel{border:1px solid #e9e7f4;border-radius:20px;padding:30px;background:#fff}
+    .panel h1{font-size:28px;margin:0 0 9px}.panel p{color:#707085;line-height:1.8}
+    .field{display:grid;gap:7px;margin-top:17px}.field label{font-weight:700;font-size:14px}
+    .field input,.field textarea,.field select{border:1px solid #dcd9ed;border-radius:11px;padding:12px 14px;width:100%;background:#fff;color:#262536}
+    .field textarea{min-height:155px;resize:vertical;line-height:1.7}
+    .field input:focus,.field textarea:focus,.field select:focus{border-color:#8f83f5}
+    .hint{font-size:12px;color:#9290a2}.form-actions{display:flex;justify-content:flex-end;margin-top:22px;align-items:center;gap:10px}
+    .reply{padding:16px 0;border-bottom:1px solid #eeeaf5;white-space:pre-wrap;overflow-wrap:anywhere}
+    .reply strong{color:#302f41}.reply time{font-size:12px;color:#9593a3;margin-left:12px}.reply p{margin:8px 0 0;color:#5d5c6e;line-height:1.8}
+    .back{border:0;background:#f1efff;color:#6656cf;border-radius:10px;padding:9px 14px;margin-bottom:18px}
+    .detail-body{font-size:17px;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere;margin:18px 0 25px;color:#545363}
+    /* แถบเมนูเดียวกันสำหรับทั้งคอมและมือถือ: บนคอมเป็นแคปซูลลอยกึ่งกลาง */
+    .bottom-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:fixed;bottom:22px;left:50%;transform:translateX(-50%);width:min(580px,calc(100% - 36px));z-index:50;background:#eef0f7ed;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid #dddef1;border-radius:24px;padding:8px;box-shadow:0 12px 42px #17142b26}
+    .bottom-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;min-height:62px;border:0;border-radius:17px;padding:7px 3px;background:transparent;color:#656276;font-size:12px;font-weight:600;white-space:nowrap;transition:background .16s,color .16s}
+    .bottom-nav button:hover{background:#e4e0ff;color:#5544c5}
+    .bottom-nav button.active{background:#dedaff;color:#4d3bb8;font-weight:800}
+    .bottom-nav .icon{width:24px;height:24px;stroke-width:2.1}
+    .bottom-nav button.active .icon{stroke-width:2.35}
+    .toast{position:fixed;bottom:120px;left:50%;transform:translateX(-50%);background:#282639;color:white;padding:12px 20px;border-radius:12px;z-index:100;box-shadow:0 12px 30px #0003;max-width:90vw;text-align:center}
+    footer{margin-top:32px;text-align:center;color:#aaa7bc;font-size:12px}
+    @media(max-width:720px){
+      :root{background:white}.site{margin:0;width:100%;max-width:none;border-radius:0;box-shadow:none}
+      .topbar{height:58px;padding:0 13px}.brand{font-size:23px}.icon-btn{width:39px;height:39px}.topbar-endcap{width:39px;height:39px}
+      .search-panel{padding:10px 14px}main{padding:13px 14px 110px}
+      .hero{grid-template-columns:1fr;gap:8px;min-height:auto;padding:26px 22px 12px;border-radius:16px}
+      .hero h1{font-size:30px;letter-spacing:-.5px}.hero h2{font-size:18px}.hero p{font-size:14px;margin-bottom:16px}
+      .primary-btn{padding:11px 16px}.hero-art{height:105px;max-width:280px;width:100%;margin:0 auto}
+      .hero-art:before{height:95px;width:190px}.bubble{font-size:24px;border-radius:20px}.bubble.a{width:110px;height:64px;left:10%;bottom:4px}
+      .bubble.b{width:112px;height:70px;right:10%;top:0}.bubble:after{display:none}
+      .pillar{gap:13px;padding:21px 4px}.pillar-icon{width:48px;height:48px;flex-basis:48px;border-radius:15px}
+      .pillar h3{font-size:16px}.pillar b{font-size:13px}.pillar p{font-size:12px}
+      .feed{margin-top:28px}.section-title h2,.panel-title{font-size:20px}.post-grid{grid-template-columns:1fr}
+      .post{padding:16px}.panel{padding:20px 16px}.panel h1{font-size:22px}.subpage{margin-top:4px}
+      /* มือถือ: แถบเมนูยึดขอบล่าง ตาม safe area ของเครื่อง */
+      .bottom-nav{bottom:0;left:0;transform:none;width:100%;border-radius:18px 18px 0 0;border-left:0;border-right:0;border-bottom:0;padding:7px 6px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px #22222813;background:#fffffff0}
+      .bottom-nav button{gap:5px;min-height:60px;font-size:clamp(10px,2.5vw,12px)}
+      .bottom-nav .icon{width:25px;height:25px}
+      .toast{bottom:94px}footer{margin-top:20px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.post{transition:none}}
+  </style>
+</head>
+<body>
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.3"/><path d="m16.2 16.2 5 5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4.5 6.5h15M4.5 12h15M4.5 17.5h15"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3.2 10 8-6.7a1.25 1.25 0 0 1 1.6 0l8 6.7"/><path d="M5.2 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10.6a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.4 20.5v-6.4h5.2v6.4"/></symbol>
+  <symbol id="i-add" viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.8 7.3L3.5 20l1.3-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/><path d="M12 7.5v8M8 11.5h8"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.7 2.92 5.94 6.56.95-4.74 4.62 1.12 6.53L12 17.66l-5.86 3.08 1.12-6.53-4.74-4.62 6.56-.95L12 2.7Z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8 8.7 8.7 0 0 1-3.6-.8L3 20l1.8-5.4A8 8 0 1 1 20 11Z"/></symbol>
+  <symbol id="i-light" viewBox="0 0 24 24"><path d="M9 18h6m-5 3h4M9 15c-4-4-4-7-1.5-9.5a6.4 6.4 0 0 1 9 9.1L15 16v2H9z"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5m7-7-7 7 7 7"/></symbol>
+</svg>
+<div class="site">
+  <header class="topbar">
+    <button id="searchToggle" class="icon-btn" aria-label="ค้นหา" aria-expanded="false"><svg class="icon"><use href="#i-search"/></svg></button>
+    <a href="#" class="brand" data-view="home" aria-label="TangMum หน้าแรก">Tang<span>Mum.</span></a>
+    <span class="topbar-endcap" aria-hidden="true"></span>
+  </header>
+  <div class="search-panel" id="searchPanel" hidden><input id="searchInput" type="search" maxlength="90" placeholder="ค้นหาหัวข้อหรือความคิดเห็น..." aria-label="ค้นหาหัวข้อ"></div>
+  <main>
+    <section class="view" id="view-home">
+      <div class="hero">
+        <div>
+          <h1>ต่างความคิด ไม่ต่างคุณค่า</h1>
+          <h2>พื้นที่เล็ก ๆ สำหรับฟังกันอย่างจริงใจ</h2>
+          <p>ทุกความคิดเห็นมีเรื่องราวและเหตุผลของตัวเอง มาพูดคุย แลกเปลี่ยน และเข้าใจกันด้วยความเคารพ</p>
+          <button class="primary-btn" data-view="create">เริ่มแลกเปลี่ยนความคิดเห็น ↗</button>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="bubble a">•••</div><div class="bubble b">•••</div></div>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <div class="pillar-icon"><svg class="icon"><use href="#i-chat"/></svg></div>
+          <div><h3>ฟังให้จบก่อนตัดสิน</h3><b>ทุกความคิดมีที่มา และเหตุผลของมัน</b><p>การรับฟังอย่างเคารพ อาจทำให้เราเข้าใจกันได้ แม้จะยังมีความคิดเห็นไม่ตรงกัน</p></div>
+        </article>
+        <article class="pillar">
+          <div class="pillar-icon"><svg class="icon"><use href="#i-light"/></svg></div>
+          <div><h3>มองต่างได้ แต่ยังร่วมทางกัน</h3><b>ความต่างไม่จำเป็นต้องกลายเป็นความขัดแย้ง</b><p>เริ่มต้นจากคำถามและความสงสัย แล้วช่วยกันมองหาจุดร่วมที่สร้างสรรค์</p></div>
+        </article>
+      </div>
+      <section class="feed" id="feedSection" aria-label="หัวข้อสนทนา">
+        <div class="section-title"><div><h2>บทสนทนาของทุกคน</h2><div class="muted small" id="postCount">กำลังโหลด...</div></div>
+          <select class="filter" id="categoryFilter" aria-label="กรองหมวดหมู่">
+            <option value="">ทุกหมวดหมู่</option><option>สังคม</option><option>การศึกษา</option><option>เทคโนโลยี</option><option>สิ่งแวดล้อม</option><option>ชีวิตประจำวัน</option>
+          </select>
+        </div>
+        <div class="post-grid" id="postList"><div class="empty">กำลังโหลดหัวข้อ...</div></div>
+      </section>
+    </section>
+    <section class="view subpage" id="view-create" hidden>
+      <div class="panel">
+        <h1>เพิ่มความคิดเห็นของคุณ</h1>
+        <p>อยากชวนคนอื่นคิดเรื่องอะไร? ตั้งคำถาม แบ่งปันเหตุผล และชวนพูดคุยอย่างเป็นมิตร</p>
+        <form id="postForm">
+          <div class="field"><label for="postName">ชื่อที่แสดง (ไม่บังคับ)</label><input id="postName" maxlength="28" placeholder="เว้นว่างเพื่อใช้นามแฝง"></div>
+          <div class="field"><label for="postCategory">หมวดหมู่ *</label><select id="postCategory" required><option value="">เลือกหมวดหมู่</option><option>สังคม</option><option>การศึกษา</option><option>เทคโนโลยี</option><option>สิ่งแวดล้อม</option><option>ชีวิตประจำวัน</option></select></div>
+          <div class="field"><label for="postTitle">หัวข้อที่อยากชวนคุย *</label><input id="postTitle" required minlength="8" maxlength="90" placeholder="เช่น AI ควรมีบทบาทในการเรียนมากแค่ไหน?"></div>
+          <div class="field"><label for="postBody">ความคิดเห็นหรือเหตุผลของคุณ *</label><textarea id="postBody" required minlength="20" maxlength="1000" placeholder="ลองบอกมุมมอง เหตุผล หรือคำถามที่อยากให้ทุกคนช่วยกันคิด..."></textarea><span class="hint">20–1,000 ตัวอักษร กรุณาไม่เปิดเผยข้อมูลส่วนบุคคล</span></div>
+          <div class="field"><label><input type="checkbox" id="postAgree" required style="width:auto;margin-right:6px"> ฉันจะเคารพผู้อื่น ไม่คุกคามหรือเผยแพร่ข้อมูลส่วนตัว</label></div>
+          <div class="form-actions"><button type="button" class="secondary-btn" data-view="home">ยกเลิก</button><button class="primary-btn" type="submit" id="postSubmit">เผยแพร่ความคิดเห็น</button></div>
+        </form>
+      </div>
+    </section>
+    <section class="view subpage" id="view-saved" hidden>
+      <div class="section-title"><div><h1 class="panel-title">☆ ที่เก็บดาว</h1><p class="muted">หัวข้อที่บันทึกไว้ในเบราว์เซอร์เครื่องนี้</p></div></div>
+      <div class="post-grid" id="savedList"></div>
+    </section>
+    <section class="view subpage" id="view-detail" hidden>
+      <button class="back" data-view="home">← กลับไปหน้าหลัก</button>
+      <article class="panel" id="detailPanel"></article>
+      <div class="panel" style="margin-top:18px">
+        <h2 class="panel-title">ความคิดเห็นตอบกลับ</h2>
+        <div id="replyList"><p class="muted">กำลังโหลด...</p></div>
+        <form id="replyForm">
+          <div class="field"><label for="replyName">ชื่อที่แสดง (ไม่บังคับ)</label><input id="replyName" maxlength="28" placeholder="ผู้ใช้นิรนาม"></div>
+          <div class="field"><label for="replyBody">ร่วมแลกเปลี่ยนอย่างเคารพ *</label><textarea id="replyBody" required minlength="3" maxlength="650" style="min-height:105px" placeholder="คุณมีมุมมองอย่างไร?"></textarea></div>
+          <div class="form-actions"><button class="primary-btn" type="submit" id="replySubmit">ส่งคำตอบ</button></div>
+        </form>
+      </div>
+    </section>
+    <section class="view subpage" id="view-about" hidden>
+      <div class="panel"><h1>เกี่ยวกับ TangMum</h1>
+        <p><b>TangMum</b> เป็นเว็บไซต์ทดลองสร้างสรรค์เพื่อส่งเสริมการฟังและการแลกเปลี่ยนความคิดเห็นที่แตกต่างอย่างมีเหตุผลและเคารพซึ่งกันและกัน</p>
+        <h2>แนวทางของชุมชน</h2>
+        <p>พูดคุยด้วยเหตุผล ไม่ใช้ถ้อยคำเกลียดชัง ไม่คุกคาม ไม่เผยแพร่ข้อมูลส่วนตัว ไม่ปลอมเป็นผู้อื่น และไม่โพสต์เนื้อหาผิดกฎหมาย ผู้ดูแลสามารถซ่อนข้อความที่ไม่เหมาะสมได้</p>
+        <h2>การเก็บข้อมูล</h2>
+        <p>ชื่อที่แสดง หัวข้อ และข้อความจะถูกเก็บใน Google Sheets ของผู้ดูแลเพื่อแสดงต่อสาธารณะ ไม่ต้องสมัครสมาชิก รายการเก็บดาวบันทึกไว้ภายในเบราว์เซอร์ของคุณเท่านั้น</p>
+        <p class="small muted">เว็บไซต์ต้นแบบสำหรับโครงงานด้าน Interactive Media และ UI/UX Design</p>
+        <button class="secondary-btn" data-view="home">กลับหน้าแรก</button>
+      </div>
+    </section>
+    <footer>© TangMum v3 — ต่างความคิด ไม่ต่างคุณค่า</footer>
+  </main>
+</div>
+<nav class="bottom-nav" aria-label="เมนูหลัก">
+  <button data-view="home" class="active"><svg class="icon"><use href="#i-home"/></svg><span>หน้าแรก</span></button>
+  <button data-view="create"><svg class="icon"><use href="#i-add"/></svg><span>เพิ่มความคิดเห็น</span></button>
+  <button data-view="saved"><svg class="icon"><use href="#i-star"/></svg><span>ที่เก็บดาว</span></button>
+  <button data-view="about"><svg class="icon"><use href="#i-menu"/></svg><span>อื่น ๆ</span></button>
+</nav>
+<div role="status" class="toast" id="toast" hidden></div>
+<script>
+(() => {
+  'use strict';
+  const API = '/.netlify/functions/api';
+  const $ = selector => document.querySelector(selector);
+  const state = {posts: [], active: 'home', currentPost: null, search: '', loading: false};
+  const views = ['home', 'create', 'saved', 'detail', 'about'];
+  const savedKey = 'tangmum_saved_v1';
+  let toastTimer;
+
+  function stars() {
+    try { return new Set(JSON.parse(localStorage.getItem(savedKey) || '[]')); }
+    catch { return new Set(); }
+  }
+  function saveStars(set) {
+    try { localStorage.setItem(savedKey, JSON.stringify([...set])); }
+    catch { notify('เบราว์เซอร์ไม่อนุญาตให้บันทึกดาว'); }
+  }
+  function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function notify(message) {
+    const box = $('#toast'); box.textContent = message; box.hidden = false;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => {box.hidden = true;}, 3800);
+  }
+  async function api(action, payload = {}) {
+    const response = await fetch(API, {
+      method: 'POST', headers: {'content-type':'application/json'},
+      body: JSON.stringify({action, ...payload})
+    });
+    let result;
+    try { result = await response.json(); }
+    catch { throw new Error('อ่านข้อมูลจากเซิร์ฟเวอร์ไม่ได้ ตรวจสอบการตั้งค่า Netlify Functions'); }
+    if (!response.ok || !result.ok) throw new Error(result.error || 'เกิดข้อผิดพลาดกับระบบ');
+    return result;
+  }
+  function switchView(name) {
+    if (!views.includes(name)) return;
+    state.active = name;
+    for (const view of views) $('#view-' + view).hidden = name !== view;
+    document.querySelectorAll('.bottom-nav [data-view]').forEach(btn =>
+      btn.classList.toggle('active', btn.dataset.view === (name === 'detail' ? 'home' : name)));
+    if (name === 'saved') renderSaved();
+    window.scrollTo({top:0, behavior:'auto'});
+  }
+  function cardHTML(post) {
+    const isStar = stars().has(post.id);
+    const preview = post.body.length > 185 ? post.body.slice(0, 185) + '…' : post.body;
+    return `<article class="post">
+      <div class="post-meta"><span class="tag">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
+      <h3><button data-open="${escapeHTML(post.id)}">${escapeHTML(post.title)}</button></h3>
+      <p>${escapeHTML(preview)}</p>
+      <div class="post-bottom"><span>โดย ${escapeHTML(post.nickname)} · ${Number(post.replyCount)||0} คำตอบ</span>
+      <div><button class="star-btn ${isStar ? 'on':''}" data-star="${escapeHTML(post.id)}" aria-label="${isStar ? 'ยกเลิกเก็บดาว':'เก็บดาว'}"><svg class="icon" style="width:18px;height:18px"><use href="#i-star"/></svg>${isStar ? 'เก็บแล้ว' : 'เก็บดาว'}</button>
+      <button class="card-link" data-open="${escapeHTML(post.id)}">อ่านต่อ →</button></div></div>
+    </article>`;
+  }
+  function renderPosts() {
+    const category = $('#categoryFilter').value;
+    const word = state.search.trim().toLocaleLowerCase('th');
+    const filtered = state.posts.filter(p => (!category || p.category === category) &&
+      (!word || [p.title,p.body,p.nickname,p.category].join(' ').toLocaleLowerCase('th').includes(word)));
+    $('#postCount').textContent = `${filtered.length} หัวข้อ`;
+    $('#postList').innerHTML = filtered.length ? filtered.map(cardHTML).join('') :
+      '<div class="empty">ยังไม่มีหัวข้อที่ตรงกับการค้นหา ลองเริ่มต้นตั้งหัวข้อแรกได้เลย</div>';
+  }
+  function renderSaved() {
+    const set = stars();
+    const list = state.posts.filter(post => set.has(post.id));
+    $('#savedList').innerHTML = list.length ? list.map(cardHTML).join('') :
+      '<div class="empty">ยังไม่มีหัวข้อที่เก็บดาว ลองกด ☆ บนหัวข้อที่สนใจได้เลย</div>';
+  }
+  async function loadPosts() {
+    try {
+      const result = await api('list');
+      state.posts = result.posts || [];
+      renderPosts(); renderSaved();
+    } catch (error) {
+      $('#postCount').textContent = 'เชื่อมต่อไม่สำเร็จ';
+      $('#postList').innerHTML = `<div class="empty">${escapeHTML(error.message)}<br><button class="secondary-btn" id="retryBtn" style="margin-top:12px">ลองอีกครั้ง</button></div>`;
+    }
+  }
+  async function openPost(id) {
+    const post = state.posts.find(p => p.id === id);
+    if (!post) {notify('ไม่พบหัวข้อ');return;}
+    state.currentPost = id;
+    $('#detailPanel').innerHTML = `<div class="post-meta"><span class="tag">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
+      <h1>${escapeHTML(post.title)}</h1><div class="muted small">เขียนโดย ${escapeHTML(post.nickname)}</div>
+      <div class="detail-body">${escapeHTML(post.body)}</div><button class="secondary-btn" data-star="${escapeHTML(post.id)}">☆ เก็บหรือยกเลิกเก็บดาว</button>`;
+    $('#replyList').innerHTML = '<p class="muted">กำลังโหลดคำตอบ...</p>';
+    switchView('detail');
+    await loadReplies(id);
+  }
+  async function loadReplies(id) {
+    try {
+      const result = await api('replies', {postId:id});
+      if (state.currentPost !== id) return;
+      $('#replyList').innerHTML = result.replies.length ? result.replies.map(reply =>
+        `<div class="reply"><strong>${escapeHTML(reply.nickname)}</strong><time>${escapeHTML(reply.createdAt)}</time><p>${escapeHTML(reply.body)}</p></div>`).join('') :
+        '<p class="muted">ยังไม่มีคำตอบ มาเป็นคนแรกที่ชวนคุยอย่างสร้างสรรค์กันเถอะ</p>';
+    } catch (error) { $('#replyList').textContent = error.message; }
+  }
+  document.addEventListener('click', async event => {
+    const navigate = event.target.closest('[data-view]');
+    if (navigate) {event.preventDefault();switchView(navigate.dataset.view);return;}
+    const open = event.target.closest('[data-open]');
+    if (open) {await openPost(open.dataset.open);return;}
+    const star = event.target.closest('[data-star]');
+    if (star) {
+      const set = stars(); const id = star.dataset.star;
+      if (set.has(id)) set.delete(id); else set.add(id);
+      saveStars(set); renderPosts(); renderSaved();
+      notify(set.has(id) ? 'เก็บหัวข้อไว้แล้ว ☆' : 'ยกเลิกเก็บดาวแล้ว');
+      return;
+    }
+    if (event.target.id === 'retryBtn') await loadPosts();
+  });
+  $('#searchToggle').addEventListener('click', () => {
+    const panel = $('#searchPanel'); panel.hidden = !panel.hidden;
+    $('#searchToggle').setAttribute('aria-expanded', String(!panel.hidden));
+    if (!panel.hidden) {switchView('home'); $('#searchInput').focus();$('#feedSection').scrollIntoView({block:'start'});}
+    else {$('#searchInput').value='';state.search='';renderPosts();}
+  });
+  $('#searchInput').addEventListener('input', event => {
+    state.search=event.target.value; renderPosts();
+  });
+  $('#categoryFilter').addEventListener('change', renderPosts);
+  $('#postForm').addEventListener('submit', async event => {
+    event.preventDefault();const btn = $('#postSubmit'); btn.disabled=true;btn.textContent='กำลังส่ง...';
+    try {
+      await api('add', {
+        nickname:$('#postName').value,
+        category:$('#postCategory').value,
+        title:$('#postTitle').value,
+        body:$('#postBody').value
+      });
+      $('#postForm').reset();$('#categoryFilter').value='';$('#searchInput').value='';state.search='';
+      switchView('home'); await loadPosts(); notify('เผยแพร่หัวข้อเรียบร้อยแล้ว');
+    } catch (error) {notify(error.message);}
+    finally {btn.disabled=false;btn.textContent='เผยแพร่ความคิดเห็น';}
+  });
+  $('#replyForm').addEventListener('submit', async event => {
+    event.preventDefault(); if (!state.currentPost) return;
+    const id = state.currentPost, btn=$('#replySubmit');btn.disabled=true;btn.textContent='กำลังส่ง...';
+    try {
+      await api('reply', {postId:id,nickname:$('#replyName').value,body:$('#replyBody').value});
+      $('#replyForm').reset();await loadReplies(id);await loadPosts();notify('ส่งคำตอบเรียบร้อยแล้ว');
+    } catch (error) {notify(error.message);}
+    finally {btn.disabled=false;btn.textContent='ส่งคำตอบ';}
+  });
+  loadPosts();
+})();
+</script>
+</body>
+</html>
