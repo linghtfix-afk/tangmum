@@ -41,16 +41,28 @@
     .section-title h2,.panel-title{margin:0;font-size:25px}.muted{color:#78788c}.small{font-size:13px}
     .filter{border:1px solid #dedbea;padding:11px 13px;border-radius:11px;color:#4a4962;background:white;max-width:180px}
     .post-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
-    .post{border:1px solid #e8e6f3;border-radius:17px;padding:20px;background:#fff;box-shadow:0 5px 18px #30306008;transition:transform .12s,border-color .12s}
+    .post{border:1px solid #e8e6f3;border-radius:20px;padding:22px;background:#fff;box-shadow:0 5px 18px #30306008;transition:transform .12s,border-color .12s;display:flex;flex-direction:column;min-width:0}
     .post:hover{border-color:#beb7ff;transform:translateY(-2px)}
     .post-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#848397;font-size:12px;margin-bottom:13px}
     .tag{background:#f0eeff;color:#6e5de3;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700}
     .post h3{font-size:19px;margin:0 0 10px;line-height:1.45}.post h3 button{border:0;padding:0;background:transparent;text-align:left;font-weight:750;color:#272638}
     .post h3 button:hover{color:#7666eb}.post p{color:#727181;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 16px}
-    .post-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f0eff7;padding-top:12px;color:#7b798f;font-size:12px}
-    .star-btn{background:transparent;border:0;display:inline-flex;align-items:center;gap:5px;color:#6e6a83;padding:4px;border-radius:8px}
-    .star-btn.on{color:#6150d0;font-weight:750}.star-btn.on svg{fill:#c8c1ff}
-    .card-link{background:none;border:none;color:#6658d1;font-weight:700;padding:5px}
+    /* ปุ่มเก็บดาวและอ่านต่อ: แยกเป็น 2 ปุ่มใหญ่ กดสะดวกทั้งคอมและมือถือ */
+    .post-bottom{display:flex;flex-direction:column;gap:13px;border-top:1px solid #f0eff7;padding-top:14px;margin-top:auto;color:#7b798f;font-size:12px}
+    .post-byline{display:flex;align-items:center;gap:7px;flex-wrap:wrap;min-width:0;line-height:1.5}
+    .post-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .post-action{border:1px solid #e5e1f5;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 12px;border-radius:12px;font-size:14px;font-weight:700;transition:transform .12s,background .12s,border-color .12s,box-shadow .12s;white-space:nowrap}
+    .post-action .icon{width:19px;height:19px;flex:none}
+    .post-action:hover{transform:translateY(-1px)}
+    .star-btn{background:#fff;color:#665d80}
+    .star-btn:hover{background:#f6f4ff;border-color:#b7acf6}
+    .star-btn.on{color:#5c4dc6;border-color:#b9b1ff;background:#f1efff}
+    .star-btn.on svg{fill:#aaa0ff;stroke:#6655d9}
+    .card-link{background:#7667ed;color:white;border-color:#7667ed;box-shadow:0 4px 14px #7667ed26}
+    .card-link:hover{background:#6152dd;border-color:#6152dd}
+    .detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 8px}
+    .detail-actions .post-action{min-width:148px}
+    @media(max-width:360px){.post-actions{gap:7px}.post-action{font-size:13px;padding:9px 6px}}
     .empty{border:1px dashed #d5d0ef;border-radius:15px;background:#fcfbff;padding:35px 20px;text-align:center;color:#77748e;grid-column:1/-1}
     .subpage{max-width:760px;margin:12px auto 0}.panel{border:1px solid #e9e7f4;border-radius:20px;padding:30px;background:#fff}
     .panel h1{font-size:28px;margin:0 0 9px}.panel p{color:#707085;line-height:1.8}
@@ -101,6 +113,7 @@
   <symbol id="i-home" viewBox="0 0 24 24"><path d="m3.2 10 8-6.7a1.25 1.25 0 0 1 1.6 0l8 6.7"/><path d="M5.2 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10.6a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.4 20.5v-6.4h5.2v6.4"/></symbol>
   <symbol id="i-add" viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.8 7.3L3.5 20l1.3-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/><path d="M12 7.5v8M8 11.5h8"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.7 2.92 5.94 6.56.95-4.74 4.62 1.12 6.53L12 17.66l-5.86 3.08 1.12-6.53-4.74-4.62 6.56-.95L12 2.7Z"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8 8.7 8.7 0 0 1-3.6-.8L3 20l1.8-5.4A8 8 0 1 1 20 11Z"/></symbol>
   <symbol id="i-light" viewBox="0 0 24 24"><path d="M9 18h6m-5 3h4M9 15c-4-4-4-7-1.5-9.5a6.4 6.4 0 0 1 9 9.1L15 16v2H9z"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5m7-7-7 7 7 7"/></symbol>
@@ -184,7 +197,7 @@
         <button class="secondary-btn" data-view="home">กลับหน้าแรก</button>
       </div>
     </section>
-    <footer>© TangMum v3 — ต่างความคิด ไม่ต่างคุณค่า</footer>
+    <footer>© TangMum v4 — ต่างความคิด ไม่ต่างคุณค่า</footer>
   </main>
 </div>
 <nav class="bottom-nav" aria-label="เมนูหลัก">
@@ -239,16 +252,25 @@
     if (name === 'saved') renderSaved();
     window.scrollTo({top:0, behavior:'auto'});
   }
-  function cardHTML(post) {
+  function starButtonHTML(post) {
     const isStar = stars().has(post.id);
+    return `<button type="button" class="post-action star-btn ${isStar ? 'on' : ''}" data-star="${escapeHTML(post.id)}" aria-pressed="${isStar}" aria-label="${isStar ? 'นำออกจากที่เก็บดาว' : 'เก็บดาวหัวข้อนี้'}">
+      <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>${isStar ? 'เก็บแล้ว' : 'เก็บดาว'}</span>
+    </button>`;
+  }
+  function cardHTML(post) {
     const preview = post.body.length > 185 ? post.body.slice(0, 185) + '…' : post.body;
     return `<article class="post">
       <div class="post-meta"><span class="tag">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
       <h3><button data-open="${escapeHTML(post.id)}">${escapeHTML(post.title)}</button></h3>
       <p>${escapeHTML(preview)}</p>
-      <div class="post-bottom"><span>โดย ${escapeHTML(post.nickname)} · ${Number(post.replyCount)||0} คำตอบ</span>
-      <div><button class="star-btn ${isStar ? 'on':''}" data-star="${escapeHTML(post.id)}" aria-label="${isStar ? 'ยกเลิกเก็บดาว':'เก็บดาว'}"><svg class="icon" style="width:18px;height:18px"><use href="#i-star"/></svg>${isStar ? 'เก็บแล้ว' : 'เก็บดาว'}</button>
-      <button class="card-link" data-open="${escapeHTML(post.id)}">อ่านต่อ →</button></div></div>
+      <div class="post-bottom">
+        <div class="post-byline"><span>โดย ${escapeHTML(post.nickname)}</span><span aria-hidden="true">•</span><span>${Number(post.replyCount)||0} คำตอบ</span></div>
+        <div class="post-actions">
+          ${starButtonHTML(post)}
+          <button type="button" class="post-action card-link" data-open="${escapeHTML(post.id)}" aria-label="อ่านรายละเอียดหัวข้อ ${escapeHTML(post.title)}">อ่านต่อ <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+        </div>
+      </div>
     </article>`;
   }
   function renderPosts() {
@@ -264,7 +286,7 @@
     const set = stars();
     const list = state.posts.filter(post => set.has(post.id));
     $('#savedList').innerHTML = list.length ? list.map(cardHTML).join('') :
-      '<div class="empty">ยังไม่มีหัวข้อที่เก็บดาว ลองกด ☆ บนหัวข้อที่สนใจได้เลย</div>';
+      '<div class="empty">ยังไม่มีหัวข้อที่เก็บดาว ลองเลือกเรื่องที่สนใจแล้วกดปุ่ม “เก็บดาว” เพื่อกลับมาอ่านภายหลังได้เลย</div>';
   }
   async function loadPosts() {
     try {
@@ -282,7 +304,7 @@
     state.currentPost = id;
     $('#detailPanel').innerHTML = `<div class="post-meta"><span class="tag">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
       <h1>${escapeHTML(post.title)}</h1><div class="muted small">เขียนโดย ${escapeHTML(post.nickname)}</div>
-      <div class="detail-body">${escapeHTML(post.body)}</div><button class="secondary-btn" data-star="${escapeHTML(post.id)}">☆ เก็บหรือยกเลิกเก็บดาว</button>`;
+      <div class="detail-body">${escapeHTML(post.body)}</div><div class="detail-actions">${starButtonHTML(post)}</div>`;
     $('#replyList').innerHTML = '<p class="muted">กำลังโหลดคำตอบ...</p>';
     switchView('detail');
     await loadReplies(id);
@@ -306,7 +328,11 @@
       const set = stars(); const id = star.dataset.star;
       if (set.has(id)) set.delete(id); else set.add(id);
       saveStars(set); renderPosts(); renderSaved();
-      notify(set.has(id) ? 'เก็บหัวข้อไว้แล้ว ☆' : 'ยกเลิกเก็บดาวแล้ว');
+      if (state.active === 'detail' && state.currentPost === id) {
+        const post = state.posts.find(p => p.id === id);
+        if (post) $('#detailPanel .detail-actions').innerHTML = starButtonHTML(post);
+      }
+      notify(set.has(id) ? 'บันทึกไว้ในที่เก็บดาวแล้ว' : 'นำออกจากที่เก็บดาวแล้ว');
       return;
     }
     if (event.target.id === 'retryBtn') await loadPosts();
