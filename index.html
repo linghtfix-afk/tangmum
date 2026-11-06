@@ -99,7 +99,23 @@
     }
     @media(prefers-reduced-motion:no-preference) and (max-width:1150px){.top-nav.open .nav-list{animation:tm-nav-open .18s cubic-bezier(.16,1,.3,1) both}}
     @keyframes tm-nav-open{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-    footer{margin-top:32px;text-align:center;color:#aaa7bc;font-size:12px}
+    .conversation-invite{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:clamp(56px,6vw,88px);padding:clamp(26px,3.8vw,48px);border-radius:20px;background:#eeecff}
+    .conversation-invite h2{max-width:18ch;margin:0 0 9px;color:#25213d;font-size:clamp(25px,2.8vw,36px);line-height:1.25;letter-spacing:-.02em}
+    .conversation-invite p{max-width:45ch;margin:0;color:#585270;font-size:15px;line-height:1.7}
+    .invite-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:none}
+    .invite-actions button{min-height:48px;padding:11px 18px;border:0;border-radius:11px;font-weight:700;transition:background-color .14s,color .14s,transform .14s}
+    .invite-actions button:active{transform:scale(.985)}
+    .invite-primary{background:#5d4bc8;color:#fff}.invite-primary:hover{background:#4f3db7}
+    .invite-secondary{background:#fff;color:#392f72}.invite-secondary:hover{background:#f8f7ff}
+    .site-footer{background-color:#f8f7fc;background-image:linear-gradient(#e5e2ef 1px,transparent 1px),linear-gradient(90deg,#e5e2ef 1px,transparent 1px);background-size:40px 40px;background-position:center top;border-top:1px solid #dedbea;color:#302b44;padding:clamp(42px,5vw,72px) clamp(18px,3.8vw,72px) 25px}
+    .footer-inner{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(2,minmax(150px,.5fr));gap:clamp(28px,4vw,64px);max-width:1280px;margin:0 auto}
+    .footer-brand{display:inline-block;color:#211d34;font-size:28px;font-weight:800;letter-spacing:-.03em;text-decoration:none}.footer-brand span{color:#6655d9}
+    .footer-about p{max-width:34ch;margin:13px 0 0;color:#585270;font-size:14px;line-height:1.75}
+    .footer-links{display:grid;align-content:start;gap:2px}
+    .footer-links h2{margin:3px 0 12px;color:#302b44;font-size:15px}
+    .footer-links button{min-height:44px;padding:8px 0;border:0;background:transparent;color:#514b65;font-size:14px;text-align:left}
+    .footer-links button:hover{color:#5041b5;text-decoration:underline;text-underline-offset:4px}
+    .footer-bottom{max-width:1280px;margin:clamp(34px,5vw,60px) auto 0;padding-top:20px;border-top:1px solid #d3cede;color:#625c75;font-size:12px}
     @media(max-width:720px){
       :root{background:white}.site{margin:0;width:100%;max-width:none;border-radius:0;box-shadow:none}
       .topbar{height:58px;padding:0 13px}.brand{font-size:23px}.icon-btn{width:44px;height:44px}.nav-toggle{min-height:44px;min-width:44px;padding:8px}.nav-toggle span{display:none}
@@ -114,7 +130,13 @@
       .pillar h3{font-size:16px}.pillar b{font-size:13px}.pillar p{font-size:12px}
       .feed{margin-top:28px}.section-title h2,.panel-title{font-size:20px}.post-grid{grid-template-columns:1fr}
       .post{padding:16px}.panel{padding:20px 16px}.panel h1{font-size:22px}.subpage{margin-top:4px}
-      .toast{bottom:calc(18px + env(safe-area-inset-bottom))}footer{margin-top:20px}
+      .conversation-invite{display:block;margin-top:56px;padding:26px 22px;border-radius:16px}
+      .conversation-invite h2{font-size:27px}.conversation-invite p{font-size:14px}
+      .invite-actions{display:grid;grid-template-columns:1fr;margin-top:23px;gap:10px}
+      .invite-actions button{width:100%}
+      .site-footer{padding:43px 22px 25px}.footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px}
+      .footer-about{grid-column:1/-1}.footer-brand{font-size:26px}.footer-bottom{margin-top:35px}
+      .toast{bottom:calc(18px + env(safe-area-inset-bottom))}
     }
     /* Short feedback stays attached to the action; content is visible immediately. */
     .post-action,.primary-btn,.secondary-btn,.back,.nav-toggle{transition:background-color .14s,border-color .14s,color .14s,box-shadow .14s,transform .14s cubic-bezier(.16,1,.3,1)}
@@ -184,6 +206,10 @@
         </div>
         <div class="post-grid" id="postList"><div class="empty">กำลังโหลดหัวข้อ...</div></div>
       </section>
+      <section class="conversation-invite" aria-labelledby="inviteTitle">
+        <div><h2 id="inviteTitle">เรื่องต่อไป อาจเริ่มที่คุณ</h2><p>ตั้งคำถามที่ชวนคิด แบ่งปันเหตุผล แล้วเปิดพื้นที่ให้มุมมองที่ต่างกันได้พบกัน</p></div>
+        <div class="invite-actions"><button class="invite-primary" type="button" data-view="create">เริ่มหัวข้อใหม่</button><button class="invite-secondary" type="button" data-feed>อ่านหัวข้อทั้งหมด</button></div>
+      </section>
     </section>
     <section class="view subpage" id="view-create" hidden>
       <div class="panel">
@@ -227,8 +253,15 @@
         <button class="secondary-btn" data-view="home">กลับหน้าแรก</button>
       </div>
     </section>
-    <footer>© TangMum v5 — ต่างความคิด ไม่ต่างคุณค่า</footer>
   </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-about"><a href="#" class="footer-brand" data-view="home" aria-label="TangMum หน้าแรก">Tang<span>Mum.</span></a><p>พื้นที่เล็ก ๆ สำหรับฟังกันอย่างจริงใจ ความคิดเห็นต่างกันได้ โดยยังเคารพกัน</p></div>
+      <nav class="footer-links" aria-label="สำรวจ TangMum"><h2>สำรวจ</h2><button type="button" data-feed>หัวข้อทั้งหมด</button><button type="button" data-view="saved">ที่เก็บดาว</button></nav>
+      <nav class="footer-links" aria-label="ร่วมสนทนา"><h2>ร่วมสนทนา</h2><button type="button" data-view="create">ตั้งหัวข้อใหม่</button><button type="button" data-view="about">แนวทางของชุมชน</button></nav>
+    </div>
+    <div class="footer-bottom">© TangMum v5 — ต่างความคิด ไม่ต่างคุณค่า</div>
+  </footer>
 </div>
 <div role="status" class="toast" id="toast" hidden></div>
 <script>
@@ -367,6 +400,8 @@
     } catch (error) { $('#replyList').textContent = error.message; }
   }
   document.addEventListener('click', async event => {
+    const feedLink = event.target.closest('[data-feed]');
+    if (feedLink) {event.preventDefault();closeNav();if (!$('#searchPanel').hidden) closeSearch();switchView('home');requestAnimationFrame(() => $('#feedSection').scrollIntoView({block:'start',behavior:motionEnabled()?'smooth':'auto'}));return;}
     const navigate = event.target.closest('[data-view]');
     if (navigate) {event.preventDefault();closeNav();if (navigate.dataset.view !== 'home' && !$('#searchPanel').hidden) closeSearch();switchView(navigate.dataset.view);return;}
     if (!event.target.closest('#topNav')) closeNav();
