@@ -10,9 +10,9 @@
     :root{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;color:#20202b;background:#fff;font-synthesis:none}
     *{box-sizing:border-box} [hidden]{display:none!important} html{scroll-behavior:smooth}
     body{margin:0;min-width:280px} button,input,textarea,select{font:inherit} button{cursor:pointer} a{color:inherit}
-    button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #ada4ff;outline-offset:2px}
+    button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #5141bc;outline-offset:3px}
     .site{width:100%;min-height:100vh;margin:0;background:#fff;border-radius:0;overflow:visible;box-shadow:none}
-    .topbar{height:72px;width:100%;background:#f7f7fc;border-bottom:1px solid #eeeefa;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 clamp(16px,3.8vw,72px);position:sticky;top:0;z-index:50;transition:top .18s,width .18s,margin .18s,border-radius .18s,box-shadow .18s}
+    .topbar{height:72px;width:100%;background:#f7f7fc;border-bottom:1px solid #eeeefa;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 clamp(16px,3.8vw,72px);position:sticky;top:0;z-index:50;transition:background-color .18s,border-color .18s,box-shadow .18s}
     .topbar.is-scrolled{top:12px;width:calc(100% - 24px);margin-inline:12px;border:1px solid #e8e5f4;border-radius:16px;background:#f7f7fcf5;box-shadow:0 8px 24px #20193d1a}
     .brand{text-decoration:none;font-size:27px;font-weight:800;letter-spacing:-.9px;line-height:1;white-space:nowrap}.brand span{color:#7d70f8}
     .icon-btn{border:0;background:transparent;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:13px;color:#242435;transition:background .16s,color .16s}
@@ -21,37 +21,38 @@
     .search-panel{position:absolute;top:calc(100% + 8px);left:clamp(16px,3.8vw,72px);width:min(520px,calc(100vw - 24px));padding:12px;background:#faf9ff;border-radius:14px;box-shadow:0 10px 28px #20193d24}
     .search-panel input{width:100%;border:1px solid #dddaf3;background:#fff;padding:12px 16px;border-radius:12px}
     main{padding:clamp(20px,2.3vw,42px) clamp(18px,3.8vw,72px) 48px}.view{max-width:none;margin:0 auto}
-    .hero{display:grid;grid-template-columns:1.4fr .9fr;gap:16px;align-items:center;background:linear-gradient(115deg,#f3f2ff,#ecebff);border-radius:22px;padding:45px 47px;min-height:320px;overflow:hidden}
+    .hero{display:grid;grid-template-columns:1.4fr .9fr;gap:16px;align-items:center;background:linear-gradient(115deg,#f3f2ff,#ecebff);border-radius:22px;padding:30px 38px;min-height:240px;overflow:hidden}
     .hero h1{font-size:clamp(29px,4vw,47px);line-height:1.23;margin:0 0 12px;letter-spacing:-1px}
     .hero h2{font-size:clamp(19px,2.5vw,27px);color:#69677f;margin:0 0 15px}
-    .hero p{font-size:16px;color:#66667b;line-height:1.9;max-width:575px;margin:0 0 24px}
-    .primary-btn{background:#8072f7;color:white;border:0;border-radius:12px;padding:13px 22px;font-weight:700;box-shadow:0 8px 20px #8678fb30}
+    .hero p{font-size:16px;color:#51506b;line-height:1.7;max-width:575px;margin:0 0 18px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .primary-btn{background:#6252d0;color:white;border:0;border-radius:12px;padding:13px 22px;font-weight:700;box-shadow:0 8px 20px #8678fb30}
     .primary-btn:hover{background:#6d5de5}.primary-btn:disabled{opacity:.6;cursor:wait}
-    .secondary-btn{background:#f1efff;color:#6559cf;border:0;border-radius:10px;padding:10px 15px;font-weight:700}
-    .hero-art{height:235px;position:relative;display:grid;place-items:center;isolation:isolate}
+    .secondary-btn{background:#fff;color:#4d3ca9;border:1px solid #c7c0ed;border-radius:10px;padding:12px 17px;font-weight:700}
+    .hero-art{height:180px;position:relative;display:grid;place-items:center;isolation:isolate}
     .hero-art:before{content:"";position:absolute;width:290px;height:200px;background:#dcd8ffb8;border-radius:48% 52% 47% 53%;transform:rotate(-18deg);z-index:-1}
     .bubble{position:absolute;display:grid;place-items:center;border-radius:35px;font-size:45px;letter-spacing:5px;box-shadow:0 12px 32px #8272de20}
-    .bubble.a{left:2%;bottom:26px;width:205px;height:115px;background:#aaa0ff;color:#fff;transform:rotate(-7deg)}
+    .bubble.a{left:2%;bottom:26px;width:205px;height:115px;background:#6252c4;color:#fff;transform:rotate(-7deg)}
     .bubble.b{right:2%;top:25px;width:205px;height:122px;background:white;color:#8c82df;transform:rotate(8deg)}
     .bubble:after{content:"";position:absolute;bottom:-18px;left:34px;border-top:26px solid currentColor;border-right:24px solid transparent;opacity:.2}
     .pillars{margin-top:25px}
     .pillar{display:flex;gap:22px;align-items:center;padding:25px 15px;border-bottom:1px solid #e6e3fd}
     .pillar-icon{width:65px;height:65px;flex:0 0 65px;background:#efedff;color:#6255ca;border-radius:20px;display:grid;place-items:center}
-    .pillar h3{margin:0 0 5px;font-size:21px}.pillar b{font-weight:600;color:#55566d}.pillar p{color:#797989;line-height:1.75;margin:5px 0 0}
-    .feed{margin-top:42px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
-    .section-title h2,.panel-title{margin:0;font-size:25px}.muted{color:#78788c}.small{font-size:13px}
+    .pillar h3{margin:0 0 5px;font-size:21px}.pillar b{font-weight:600;color:#55566d}.pillar p{color:#605e72;line-height:1.75;margin:5px 0 0}
+    .feed{margin-top:24px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+    .section-title h2,.panel-title{margin:0;font-size:25px}.muted{color:#605e72}.small{font-size:13px}
     .filter{border:1px solid #dedbea;padding:11px 13px;border-radius:11px;color:#4a4962;background:white;max-width:180px}
     .post-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
     .post{border:1px solid #e8e6f3;border-radius:20px;padding:22px;background:#fff;box-shadow:0 5px 18px #30306008;transition:transform .12s,border-color .12s;display:flex;flex-direction:column;min-width:0}
     .post:hover{border-color:#beb7ff}
-    .post-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#848397;font-size:12px;margin-bottom:13px}
-    .tag{background:#f0eeff;color:#6e5de3;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    .post-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#605e72;font-size:12px;margin-bottom:13px}
+    .tag{background:#f0eeff;color:#4d3db5;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700}
     .post h3{font-size:19px;margin:0 0 10px;line-height:1.45}.post h3 button{border:0;padding:0;background:transparent;text-align:left;font-weight:750;color:#272638}
-    .post h3 button:hover{color:#7666eb}.post p{color:#727181;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 16px}
+    .post h3 a{text-decoration:none;font-weight:750;color:#272638}.post h3 a:hover{text-decoration:underline;text-underline-offset:3px;color:#5141bc}.post p{color:#5a596c;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 16px}
     /* ปุ่มเก็บดาวและอ่านต่อ: แยกเป็น 2 ปุ่มใหญ่ กดสะดวกทั้งคอมและมือถือ */
-    .post-bottom{display:flex;flex-direction:column;gap:13px;border-top:1px solid #f0eff7;padding-top:14px;margin-top:auto;color:#7b798f;font-size:12px}
+    .post-bottom{display:flex;flex-direction:column;gap:13px;border-top:1px solid #f0eff7;padding-top:14px;margin-top:auto;color:#5c586f;font-size:12px}
     .post-byline{display:flex;align-items:center;gap:7px;flex-wrap:wrap;min-width:0;line-height:1.5}
-    .post-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .post-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
     .post-action{border:1px solid #e5e1f5;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 12px;border-radius:12px;font-size:14px;font-weight:700;transition:transform .12s,background .12s,border-color .12s,box-shadow .12s;white-space:nowrap}
     .post-action .icon{width:19px;height:19px;flex:none}
     .post-action:hover{border-color:#b7acf6}
@@ -59,26 +60,25 @@
     .star-btn:hover{background:#f6f4ff;border-color:#b7acf6}
     .star-btn.on{color:#5c4dc6;border-color:#b9b1ff;background:#f1efff}
     .star-btn.on svg{fill:#aaa0ff;stroke:#6655d9}
-    .card-link{background:#7667ed;color:white;border-color:#7667ed;box-shadow:0 4px 14px #7667ed26}
+    .card-link{background:#6252d0;color:white;border-color:#6252d0;box-shadow:0 4px 14px #7667ed26;text-decoration:none}
     .card-link:hover{background:#6152dd;border-color:#6152dd}
     .detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 8px}
     .detail-actions .post-action{min-width:148px}
-    @media(max-width:360px){.post-actions{gap:7px}.post-action{font-size:13px;padding:9px 6px}}
-    .empty{border:1px dashed #d5d0ef;border-radius:15px;background:#fcfbff;padding:35px 20px;text-align:center;color:#77748e;grid-column:1/-1}
+    .share-btn{background:#fff;color:#4d3ca9}
+    @media(max-width:360px){.post-actions{gap:7px}.post-action{font-size:13px;padding:9px 6px}.hero-actions button{font-size:12px}}
+    .empty{border:1px dashed #d5d0ef;border-radius:15px;background:#fcfbff;padding:35px 20px;text-align:center;color:#514b69;grid-column:1/-1}
     .subpage{max-width:760px;margin:12px auto 0}.panel{border:1px solid #e9e7f4;border-radius:20px;padding:30px;background:#fff}
     .panel h1{font-size:28px;margin:0 0 9px}.panel p{color:#707085;line-height:1.8}
     .field{display:grid;gap:7px;margin-top:17px}.field label{font-weight:700;font-size:14px}
     .field input,.field textarea,.field select{border:1px solid #dcd9ed;border-radius:11px;padding:12px 14px;width:100%;background:#fff;color:#262536}
     .field textarea{min-height:155px;resize:vertical;line-height:1.7}
     .field input:focus,.field textarea:focus,.field select:focus{border-color:#8f83f5}
-    .hint{font-size:12px;color:#9290a2}.form-actions{display:flex;justify-content:flex-end;margin-top:22px;align-items:center;gap:10px}
+    .hint{font-size:12px;color:#605e72}.form-actions{display:flex;justify-content:flex-end;margin-top:22px;align-items:center;gap:10px}
     .reply{padding:16px 0;border-bottom:1px solid #eeeaf5;white-space:pre-wrap;overflow-wrap:anywhere}
-    .reply strong{color:#302f41}.reply time{font-size:12px;color:#9593a3;margin-left:12px}.reply p{margin:8px 0 0;color:#5d5c6e;line-height:1.8}
+    .reply strong{color:#302f41}.reply time{font-size:12px;color:#605e72;margin-left:12px}.reply p{margin:8px 0 0;color:#5d5c6e;line-height:1.8}
     .back{border:0;background:#f1efff;color:#6656cf;border-radius:10px;padding:9px 14px;margin-bottom:18px}
     .detail-body{font-size:17px;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere;margin:18px 0 25px;color:#545363}
     .top-nav{justify-self:end;min-width:0}
-    .nav-toggle{display:none}
-    .nav-list{display:flex;align-items:center;gap:3px}
     .nav-list button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:8px 11px;border:0;border-radius:11px;background:transparent;color:#58556d;font-size:13px;font-weight:700;white-space:nowrap;transition:background-color .14s,color .14s}
     .nav-list button:hover{background:#e9e7fc;color:#5143be}
     .nav-list button.active{background:#dedaff;color:#4d3bb8}
@@ -88,7 +88,6 @@
       @keyframes tm-nav-select{from{transform:scale(.86)}to{transform:scale(1)}}
     }
     .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#282639;color:white;padding:12px 20px;border-radius:12px;z-index:100;box-shadow:0 12px 30px #0003;max-width:90vw;text-align:center}
-    @media(max-width:1150px){
       .nav-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:44px;min-height:44px;padding:8px 10px;border:1px solid #d8d4ef;border-radius:11px;background:#fff;color:#302c51;font-size:13px;font-weight:700}
       .nav-toggle[aria-expanded=true]{background:#dedaff;border-color:#bdb4fb}
       .nav-toggle .icon{width:21px;height:21px}
@@ -96,8 +95,8 @@
       .top-nav.open .nav-list{display:grid;gap:3px}
       .nav-list button{justify-content:flex-start;width:100%;min-height:48px;padding:10px 13px;font-size:14px}
       .nav-list .icon{width:21px;height:21px}
-    }
-    @media(prefers-reduced-motion:no-preference) and (max-width:1150px){.top-nav.open .nav-list{animation:tm-nav-open .18s cubic-bezier(.16,1,.3,1) both}}
+      .nav-toggle span{display:none}
+    @media(prefers-reduced-motion:no-preference){.top-nav.open .nav-list{animation:tm-nav-open .18s cubic-bezier(.16,1,.3,1) both}}
     @keyframes tm-nav-open{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
     .conversation-invite{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:clamp(56px,6vw,88px);padding:clamp(26px,3.8vw,48px);border-radius:20px;background:#eeecff}
     .conversation-invite h2{max-width:18ch;margin:0 0 9px;color:#25213d;font-size:clamp(25px,2.8vw,36px);line-height:1.25;letter-spacing:-.02em}
@@ -118,17 +117,18 @@
     .footer-bottom{max-width:1280px;margin:clamp(34px,5vw,60px) auto 0;padding-top:20px;border-top:1px solid #d3cede;color:#625c75;font-size:12px}
     @media(max-width:720px){
       :root{background:white}.site{margin:0;width:100%;max-width:none;border-radius:0;box-shadow:none}
-      .topbar{height:58px;padding:0 13px}.brand{font-size:23px}.icon-btn{width:44px;height:44px}.nav-toggle{min-height:44px;min-width:44px;padding:8px}.nav-toggle span{display:none}
+      .topbar{height:58px;padding:0 13px}.brand{font-size:23px}.icon-btn{width:44px;height:44px}.nav-toggle{min-height:44px;min-width:44px;padding:8px}
       .nav-list{right:12px}
       .search-panel{left:0;width:100%;padding:10px 14px}main{padding:13px 14px 38px}
-      .hero{grid-template-columns:1fr;gap:8px;min-height:auto;padding:26px 22px 12px;border-radius:16px}
-      .hero h1{font-size:30px;letter-spacing:-.5px}.hero h2{font-size:18px}.hero p{font-size:14px;margin-bottom:16px}
-      .primary-btn{padding:11px 16px}.hero-art{height:105px;max-width:280px;width:100%;margin:0 auto}
+      .hero{grid-template-columns:1fr;gap:0;min-height:auto;padding:21px 20px;border-radius:16px}
+      .hero h1{font-size:28px;letter-spacing:-.5px}.hero h2{font-size:17px;margin-bottom:9px}.hero p{font-size:14px;margin-bottom:14px}
+      .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.hero-actions button{min-height:44px;padding:9px 8px;font-size:13px}
+      .hero-art{display:none}
       .hero-art:before{height:95px;width:190px}.bubble{font-size:24px;border-radius:20px}.bubble.a{width:110px;height:64px;left:10%;bottom:4px}
       .bubble.b{width:112px;height:70px;right:10%;top:0}.bubble:after{display:none}
-      .pillar{gap:13px;padding:21px 4px}.pillar-icon{width:48px;height:48px;flex-basis:48px;border-radius:15px}
+      .pillars{display:none}.pillar{gap:13px;padding:21px 4px}.pillar-icon{width:48px;height:48px;flex-basis:48px;border-radius:15px}
       .pillar h3{font-size:16px}.pillar b{font-size:13px}.pillar p{font-size:12px}
-      .feed{margin-top:28px}.section-title h2,.panel-title{font-size:20px}.post-grid{grid-template-columns:1fr}
+      .feed{margin-top:23px}.section-title{align-items:stretch;flex-direction:column}.filter{max-width:none;width:100%}.section-title h2,.panel-title{font-size:20px}.post-grid{grid-template-columns:1fr}
       .post{padding:16px}.panel{padding:20px 16px}.panel h1{font-size:22px}.subpage{margin-top:4px}
       .conversation-invite{display:block;margin-top:56px;padding:26px 22px;border-radius:16px}
       .conversation-invite h2{font-size:27px}.conversation-invite p{font-size:14px}
@@ -136,12 +136,13 @@
       .invite-actions button{width:100%}
       .site-footer{padding:43px 22px 25px}.footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px}
       .footer-about{grid-column:1/-1}.footer-brand{font-size:26px}.footer-bottom{margin-top:35px}
-      .toast{bottom:calc(18px + env(safe-area-inset-bottom))}
+      .toast{bottom:calc(20px + env(safe-area-inset-bottom))}
     }
     /* Short feedback stays attached to the action; content is visible immediately. */
     .post-action,.primary-btn,.secondary-btn,.back,.nav-toggle{transition:background-color .14s,border-color .14s,color .14s,box-shadow .14s,transform .14s cubic-bezier(.16,1,.3,1)}
     .post-action:active,.primary-btn:active,.secondary-btn:active,.back:active,.nav-toggle:active{transform:scale(.985)}
     .feed,.view{scroll-margin-top:88px}
+    .status-error{color:#9a253f;font-weight:600}
     @media(prefers-reduced-motion:no-preference){.toast:not([hidden]){animation:tm-toast-in .18s cubic-bezier(.16,1,.3,1) both}}
     @keyframes tm-toast-in{from{opacity:.7;transform:translate(-50%,5px)}to{opacity:1;transform:translate(-50%,0)}}
     @media(prefers-reduced-motion:reduce){
@@ -170,8 +171,8 @@
       <button class="nav-toggle" id="navToggle" type="button" aria-label="เปิดเมนูหลัก" aria-expanded="false" aria-controls="navList"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span>เมนู</span></button>
       <div class="nav-list" id="navList">
         <button type="button" data-view="home" class="active" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>หน้าแรก</span></button>
-        <button type="button" data-view="create"><svg class="icon" aria-hidden="true"><use href="#i-add"/></svg><span>เพิ่มความคิดเห็น</span></button>
-        <button type="button" data-view="saved"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>ที่เก็บดาว</span></button>
+        <button type="button" data-view="create"><svg class="icon" aria-hidden="true"><use href="#i-add"/></svg><span>ตั้งหัวข้อ</span></button>
+        <button type="button" data-view="saved"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>บันทึกไว้</span></button>
         <button type="button" data-view="about"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span>อื่น ๆ</span></button>
       </div>
     </nav>
@@ -184,7 +185,7 @@
           <h1>ต่างความคิด ไม่ต่างคุณค่า</h1>
           <h2>พื้นที่เล็ก ๆ สำหรับฟังกันอย่างจริงใจ</h2>
           <p>ทุกความคิดเห็นมีเรื่องราวและเหตุผลของตัวเอง มาพูดคุย แลกเปลี่ยน และเข้าใจกันด้วยความเคารพ</p>
-          <button class="primary-btn" data-view="create">เริ่มแลกเปลี่ยนความคิดเห็น ↗</button>
+          <div class="hero-actions"><button class="primary-btn" type="button" data-feed>สำรวจบทสนทนา</button><button class="secondary-btn" type="button" data-view="create">ตั้งหัวข้อของคุณ</button></div>
         </div>
         <div class="hero-art" aria-hidden="true"><div class="bubble a">•••</div><div class="bubble b">•••</div></div>
       </div>
@@ -213,29 +214,31 @@
     </section>
     <section class="view subpage" id="view-create" hidden>
       <div class="panel">
-        <h1>เพิ่มความคิดเห็นของคุณ</h1>
+        <h1>ตั้งหัวข้อของคุณ</h1>
         <p>อยากชวนคนอื่นคิดเรื่องอะไร? ตั้งคำถาม แบ่งปันเหตุผล และชวนพูดคุยอย่างเป็นมิตร</p>
         <form id="postForm">
+          <p class="status-error" id="postFormError" role="alert" tabindex="-1" hidden></p>
           <div class="field"><label for="postName">ชื่อที่แสดง (ไม่บังคับ)</label><input id="postName" maxlength="28" placeholder="เว้นว่างเพื่อใช้นามแฝง"></div>
           <div class="field"><label for="postCategory">หมวดหมู่ *</label><select id="postCategory" required><option value="">เลือกหมวดหมู่</option><option>สังคม</option><option>การศึกษา</option><option>เทคโนโลยี</option><option>สิ่งแวดล้อม</option><option>ชีวิตประจำวัน</option></select></div>
           <div class="field"><label for="postTitle">หัวข้อที่อยากชวนคุย *</label><input id="postTitle" required minlength="8" maxlength="90" placeholder="เช่น AI ควรมีบทบาทในการเรียนมากแค่ไหน?"></div>
           <div class="field"><label for="postBody">ความคิดเห็นหรือเหตุผลของคุณ *</label><textarea id="postBody" required minlength="20" maxlength="1000" placeholder="ลองบอกมุมมอง เหตุผล หรือคำถามที่อยากให้ทุกคนช่วยกันคิด..."></textarea><span class="hint">20–1,000 ตัวอักษร กรุณาไม่เปิดเผยข้อมูลส่วนบุคคล</span></div>
           <div class="field"><label><input type="checkbox" id="postAgree" required style="width:auto;margin-right:6px"> ฉันจะเคารพผู้อื่น ไม่คุกคามหรือเผยแพร่ข้อมูลส่วนตัว</label></div>
-          <div class="form-actions"><button type="button" class="secondary-btn" data-view="home">ยกเลิก</button><button class="primary-btn" type="submit" id="postSubmit">เผยแพร่ความคิดเห็น</button></div>
+          <div class="form-actions"><button type="button" class="secondary-btn" data-view="home">ยกเลิก</button><button class="primary-btn" type="submit" id="postSubmit">เผยแพร่หัวข้อ</button></div>
         </form>
       </div>
     </section>
     <section class="view subpage" id="view-saved" hidden>
-      <div class="section-title"><div><h1 class="panel-title">☆ ที่เก็บดาว</h1><p class="muted">หัวข้อที่บันทึกไว้ในเบราว์เซอร์เครื่องนี้</p></div></div>
+      <div class="section-title"><div><h1 class="panel-title">☆ บันทึกไว้</h1><p class="muted">หัวข้อที่บันทึกไว้ในเบราว์เซอร์เครื่องนี้</p></div></div>
       <div class="post-grid" id="savedList"></div>
     </section>
     <section class="view subpage" id="view-detail" hidden>
       <button class="back" data-view="home">← กลับไปหน้าหลัก</button>
       <article class="panel" id="detailPanel"></article>
-      <div class="panel" style="margin-top:18px">
+      <div class="panel" id="repliesPanel" style="margin-top:18px">
         <h2 class="panel-title">ความคิดเห็นตอบกลับ</h2>
         <div id="replyList"><p class="muted">กำลังโหลด...</p></div>
         <form id="replyForm">
+          <p class="status-error" id="replyFormError" role="alert" tabindex="-1" hidden></p>
           <div class="field"><label for="replyName">ชื่อที่แสดง (ไม่บังคับ)</label><input id="replyName" maxlength="28" placeholder="ผู้ใช้นิรนาม"></div>
           <div class="field"><label for="replyBody">ร่วมแลกเปลี่ยนอย่างเคารพ *</label><textarea id="replyBody" required minlength="3" maxlength="650" style="min-height:105px" placeholder="คุณมีมุมมองอย่างไร?"></textarea></div>
           <div class="form-actions"><button class="primary-btn" type="submit" id="replySubmit">ส่งคำตอบ</button></div>
@@ -245,6 +248,8 @@
     <section class="view subpage" id="view-about" hidden>
       <div class="panel"><h1>เกี่ยวกับ TangMum</h1>
         <p><b>TangMum</b> เป็นเว็บไซต์ทดลองสร้างสรรค์เพื่อส่งเสริมการฟังและการแลกเปลี่ยนความคิดเห็นที่แตกต่างอย่างมีเหตุผลและเคารพซึ่งกันและกัน</p>
+        <h2>ฟังให้จบก่อนตัดสิน</h2><p>ทุกความคิดมีที่มาและเหตุผลของมัน การรับฟังอย่างเคารพอาจทำให้เราเข้าใจกันได้ แม้ความคิดเห็นจะไม่ตรงกัน</p>
+        <h2>มองต่างได้ แต่ยังร่วมทางกัน</h2><p>เริ่มต้นจากคำถามและความสงสัย แล้วช่วยกันมองหาจุดร่วมที่สร้างสรรค์</p>
         <h2>แนวทางของชุมชน</h2>
         <p>พูดคุยด้วยเหตุผล ไม่ใช้ถ้อยคำเกลียดชัง ไม่คุกคาม ไม่เผยแพร่ข้อมูลส่วนตัว ไม่ปลอมเป็นผู้อื่น และไม่โพสต์เนื้อหาผิดกฎหมาย ผู้ดูแลสามารถซ่อนข้อความที่ไม่เหมาะสมได้</p>
         <h2>การเก็บข้อมูล</h2>
@@ -257,24 +262,46 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-about"><a href="#" class="footer-brand" data-view="home" aria-label="TangMum หน้าแรก">Tang<span>Mum.</span></a><p>พื้นที่เล็ก ๆ สำหรับฟังกันอย่างจริงใจ ความคิดเห็นต่างกันได้ โดยยังเคารพกัน</p></div>
-      <nav class="footer-links" aria-label="สำรวจ TangMum"><h2>สำรวจ</h2><button type="button" data-feed>หัวข้อทั้งหมด</button><button type="button" data-view="saved">ที่เก็บดาว</button></nav>
+      <nav class="footer-links" aria-label="สำรวจ TangMum"><h2>สำรวจ</h2><button type="button" data-feed>หัวข้อทั้งหมด</button><button type="button" data-view="saved">บันทึกไว้</button></nav>
       <nav class="footer-links" aria-label="ร่วมสนทนา"><h2>ร่วมสนทนา</h2><button type="button" data-view="create">ตั้งหัวข้อใหม่</button><button type="button" data-view="about">แนวทางของชุมชน</button></nav>
     </div>
     <div class="footer-bottom">© TangMum v5 — ต่างความคิด ไม่ต่างคุณค่า</div>
   </footer>
 </div>
+
 <div role="status" class="toast" id="toast" hidden></div>
 <script>
 (() => {
   'use strict';
   const API = '/.netlify/functions/api';
   const $ = selector => document.querySelector(selector);
-  const state = {posts: [], active: 'home', currentPost: null, search: '', loading: false};
+  const state = {posts: [], active: 'home', currentPost: null, search: '', loading: false, loadError: ''};
   const views = ['home', 'create', 'saved', 'detail', 'about'];
   const savedKey = 'tangmum_saved_v1';
   let toastTimer;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const motionEnabled = () => !reducedMotion.matches;
+  const postHref = id => '?post=' + encodeURIComponent(id);
+  const postURL = id => new URL(postHref(id), location.href).href;
+  function navigateView(name) {
+    if (!views.includes(name)) return;
+    history.pushState({tangmum:true}, '', location.pathname + (name === 'home' ? '' : '?view=' + name));
+    state.currentPost = null;
+    document.title = 'TangMum | ทุกความคิดมีคุณค่า';
+    switchView(name);
+    const destination = $('#view-' + name);
+    destination.setAttribute('tabindex', '-1');
+    destination.focus({preventScroll:true});
+  }
+  function applyRoute() {
+    const params = new URLSearchParams(location.search);
+    const id = params.get('post');
+    if (id) { openPost(id, false); return; }
+    state.currentPost = null;
+    const view = params.get('view');
+    switchView(view && views.includes(view) && view !== 'detail' ? view : 'home');
+    document.title = 'TangMum | ทุกความคิดมีคุณค่า';
+  }
   function closeNav(restoreFocus = false) {
     $('#topNav').classList.remove('open');
     $('#navToggle').setAttribute('aria-expanded', 'false');
@@ -295,7 +322,8 @@
   }
   function saveStars(set) {
     try { localStorage.setItem(savedKey, JSON.stringify([...set])); }
-    catch { notify('เบราว์เซอร์ไม่อนุญาตให้บันทึกดาว'); }
+    catch { notify('บันทึกไม่ได้ เบราว์เซอร์ไม่อนุญาตให้เก็บข้อมูล'); return false; }
+    return true;
   }
   function escapeHTML(value) {
     return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -335,21 +363,22 @@
   }
   function starButtonHTML(post) {
     const isStar = stars().has(post.id);
-    return `<button type="button" class="post-action star-btn ${isStar ? 'on' : ''}" data-star="${escapeHTML(post.id)}" aria-pressed="${isStar}" aria-label="${isStar ? 'นำออกจากที่เก็บดาว' : 'เก็บดาวหัวข้อนี้'}">
-      <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>${isStar ? 'เก็บแล้ว' : 'เก็บดาว'}</span>
+    return `<button type="button" class="post-action star-btn ${isStar ? 'on' : ''}" data-star="${escapeHTML(post.id)}" aria-pressed="${isStar}" aria-label="${isStar ? 'นำหัวข้อออกจากที่บันทึก' : 'บันทึกหัวข้อนี้'}">
+      <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>${isStar ? 'บันทึกแล้ว' : 'บันทึก'}</span>
     </button>`;
   }
   function cardHTML(post) {
     const preview = post.body.length > 185 ? post.body.slice(0, 185) + '…' : post.body;
     return `<article class="post">
       <div class="post-meta"><span class="tag">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
-      <h3><button data-open="${escapeHTML(post.id)}">${escapeHTML(post.title)}</button></h3>
+      <h3><a href="${escapeHTML(postHref(post.id))}" data-open="${escapeHTML(post.id)}">${escapeHTML(post.title)}</a></h3>
       <p>${escapeHTML(preview)}</p>
       <div class="post-bottom">
         <div class="post-byline"><span>โดย ${escapeHTML(post.nickname)}</span><span aria-hidden="true">•</span><span>${Number(post.replyCount)||0} คำตอบ</span></div>
         <div class="post-actions">
           ${starButtonHTML(post)}
-          <button type="button" class="post-action card-link" data-open="${escapeHTML(post.id)}" aria-label="อ่านรายละเอียดหัวข้อ ${escapeHTML(post.title)}">อ่านต่อ <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          <a class="post-action card-link" href="${escapeHTML(postHref(post.id))}" data-open="${escapeHTML(post.id)}" aria-label="อ่านรายละเอียดหัวข้อ ${escapeHTML(post.title)}">อ่านต่อ <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></a>
+          <button type="button" class="post-action share-btn" data-share="${escapeHTML(post.id)}" aria-label="คัดลอกลิงก์หัวข้อ ${escapeHTML(post.title)}">แชร์</button>
         </div>
       </div>
     </article>`;
@@ -364,30 +393,60 @@
       '<div class="empty">ยังไม่มีหัวข้อที่ตรงกับการค้นหา ลองเริ่มต้นตั้งหัวข้อแรกได้เลย</div>';
   }
   function renderSaved() {
+    if (state.loadError) {
+      $('#savedList').innerHTML = '<div class="empty"><p class="status-error">' + escapeHTML(state.loadError) + '</p><button class="secondary-btn" data-retry-posts type="button">ลองอีกครั้ง</button></div>';
+      return;
+    }
     const set = stars();
     const list = state.posts.filter(post => set.has(post.id));
     $('#savedList').innerHTML = list.length ? list.map(cardHTML).join('') :
-      '<div class="empty">ยังไม่มีหัวข้อที่เก็บดาว ลองเลือกเรื่องที่สนใจแล้วกดปุ่ม “เก็บดาว” เพื่อกลับมาอ่านภายหลังได้เลย</div>';
+      '<div class="empty">ยังไม่มีหัวข้อที่บันทึกไว้ ลองเลือกเรื่องที่สนใจแล้วกดปุ่ม “บันทึก” เพื่อกลับมาอ่านภายหลังได้เลย</div>';
   }
   async function loadPosts() {
+    state.loadError = '';
+    state.loading = true;
+    for (const selector of ['#postList','#savedList']) {
+      $(selector).setAttribute('aria-busy','true');
+      $(selector).innerHTML = '<p class="muted" role="status">กำลังโหลดหัวข้อ...</p>';
+    }
     try {
       const result = await api('list');
       state.posts = result.posts || [];
       renderPosts(); renderSaved();
     } catch (error) {
+      state.loadError = error.message;
       $('#postCount').textContent = 'เชื่อมต่อไม่สำเร็จ';
-      $('#postList').innerHTML = `<div class="empty">${escapeHTML(error.message)}<br><button class="secondary-btn" id="retryBtn" style="margin-top:12px">ลองอีกครั้ง</button></div>`;
+      $('#postList').innerHTML = `<div class="empty">${escapeHTML(error.message)}<br><button class="secondary-btn" data-retry-posts style="margin-top:12px">ลองอีกครั้ง</button></div>`;
+      renderSaved();
+    } finally {
+      state.loading = false;
+      for (const selector of ['#postList','#savedList']) $(selector).setAttribute('aria-busy','false');
     }
   }
-  async function openPost(id) {
+  async function openPost(id, updateUrl = true) {
+    if (updateUrl) history.pushState({tangmum:true}, '', postHref(id));
     const post = state.posts.find(p => p.id === id);
-    if (!post) {notify('ไม่พบหัวข้อ');return;}
+    if (!post) {
+      state.currentPost = null;
+      $('#detailPanel').innerHTML = '<h1>เปิดหัวข้อนี้ไม่ได้</h1><p class="status-error">' +
+        escapeHTML(state.loadError || 'ไม่พบหัวข้อนี้ อาจถูกลบหรือเปลี่ยนลิงก์แล้ว') +
+        '</p><button class="secondary-btn" id="retryDetail" type="button">ลองอีกครั้ง</button>';
+      $('#repliesPanel').hidden = true;
+      switchView('detail');
+      document.title = 'เปิดหัวข้อไม่ได้ | TangMum';
+      return;
+    }
     state.currentPost = id;
+    $('#replyFormError').hidden = true;
+    $('#repliesPanel').hidden = false;
+    document.title = post.title + ' | TangMum';
     $('#detailPanel').innerHTML = `<div class="post-meta"><span class="tag">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
       <h1>${escapeHTML(post.title)}</h1><div class="muted small">เขียนโดย ${escapeHTML(post.nickname)}</div>
-      <div class="detail-body">${escapeHTML(post.body)}</div><div class="detail-actions">${starButtonHTML(post)}</div>`;
+      <div class="detail-body">${escapeHTML(post.body)}</div><div class="detail-actions">${starButtonHTML(post)}<button type="button" class="post-action share-btn" data-share="${escapeHTML(id)}">คัดลอกลิงก์</button></div>`;
     $('#replyList').innerHTML = '<p class="muted">กำลังโหลดคำตอบ...</p>';
     switchView('detail');
+    $('#detailPanel h1').setAttribute('tabindex', '-1');
+    $('#detailPanel h1').focus({preventScroll:true});
     await loadReplies(id);
   }
   async function loadReplies(id) {
@@ -397,29 +456,43 @@
       $('#replyList').innerHTML = result.replies.length ? result.replies.map(reply =>
         `<div class="reply"><strong>${escapeHTML(reply.nickname)}</strong><time>${escapeHTML(reply.createdAt)}</time><p>${escapeHTML(reply.body)}</p></div>`).join('') :
         '<p class="muted">ยังไม่มีคำตอบ มาเป็นคนแรกที่ชวนคุยอย่างสร้างสรรค์กันเถอะ</p>';
-    } catch (error) { $('#replyList').textContent = error.message; }
+    } catch (error) { if (state.currentPost !== id) return; $('#replyList').innerHTML = '<p class="status-error">' + escapeHTML(error.message) + '</p><button type="button" class="secondary-btn" data-retry-replies>ลองโหลดคำตอบอีกครั้ง</button>'; }
   }
   document.addEventListener('click', async event => {
     const feedLink = event.target.closest('[data-feed]');
-    if (feedLink) {event.preventDefault();closeNav();if (!$('#searchPanel').hidden) closeSearch();switchView('home');requestAnimationFrame(() => $('#feedSection').scrollIntoView({block:'start',behavior:motionEnabled()?'smooth':'auto'}));return;}
+    if (feedLink) {event.preventDefault();closeNav();if (!$('#searchPanel').hidden) closeSearch();if (state.active !== 'home') navigateView('home');requestAnimationFrame(() => $('#feedSection').scrollIntoView({block:'start',behavior:motionEnabled()?'smooth':'auto'}));return;}
     const navigate = event.target.closest('[data-view]');
-    if (navigate) {event.preventDefault();closeNav();if (navigate.dataset.view !== 'home' && !$('#searchPanel').hidden) closeSearch();switchView(navigate.dataset.view);return;}
+    if (navigate) {event.preventDefault();closeNav();if (navigate.dataset.view !== 'home' && !$('#searchPanel').hidden) closeSearch();navigateView(navigate.dataset.view);return;}
     if (!event.target.closest('#topNav')) closeNav();
     const open = event.target.closest('[data-open]');
-    if (open) {await openPost(open.dataset.open);return;}
+    if (open) {if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;event.preventDefault();await openPost(open.dataset.open);return;}
+    const share = event.target.closest('[data-share]');
+    if (share) {
+      try { await navigator.clipboard.writeText(postURL(share.dataset.share)); notify('คัดลอกลิงก์หัวข้อแล้ว'); }
+      catch {
+        const field = document.createElement('textarea');
+        field.value = postURL(share.dataset.share); document.body.append(field); field.select();
+        let copied = false;
+        try { copied = document.execCommand('copy'); } catch {} finally { field.remove(); }
+        notify(copied ? 'คัดลอกลิงก์หัวข้อแล้ว' : 'คัดลอกไม่ได้ กรุณาใช้ลิงก์จากแถบที่อยู่');
+      }
+      return;
+    }
     const star = event.target.closest('[data-star]');
     if (star) {
       const set = stars(); const id = star.dataset.star;
       if (set.has(id)) set.delete(id); else set.add(id);
-      saveStars(set); renderPosts(); renderSaved();
+      if (!saveStars(set)) return;
+      renderPosts(); renderSaved();
       if (state.active === 'detail' && state.currentPost === id) {
         const post = state.posts.find(p => p.id === id);
-        if (post) $('#detailPanel .detail-actions').innerHTML = starButtonHTML(post);
+        if (post) $('#detailPanel .star-btn').outerHTML = starButtonHTML(post);
       }
-      notify(set.has(id) ? 'บันทึกไว้ในที่เก็บดาวแล้ว' : 'นำออกจากที่เก็บดาวแล้ว');
+      notify(set.has(id) ? 'บันทึกหัวข้อไว้แล้ว' : 'นำหัวข้อออกจากที่บันทึกแล้ว');
       return;
     }
-    if (event.target.id === 'retryBtn') await loadPosts();
+    if (event.target.closest('[data-retry-posts]') || event.target.id === 'retryDetail') {await loadPosts();applyRoute();}
+    if (event.target.closest('[data-retry-replies]') && state.currentPost) await loadReplies(state.currentPost);
   });
   $('#navToggle').addEventListener('click', () => {
     if (!$('#searchPanel').hidden) closeSearch();
@@ -436,7 +509,7 @@
   $('#searchToggle').addEventListener('click', () => {
     const panel = $('#searchPanel'); panel.hidden = !panel.hidden;
     $('#searchToggle').setAttribute('aria-expanded', String(!panel.hidden));
-    if (!panel.hidden) {closeNav();switchView('home'); $('#searchInput').focus();$('#feedSection').scrollIntoView({block:'start', behavior:motionEnabled()?'smooth':'auto'});}
+    if (!panel.hidden) {closeNav();if (state.active !== 'home') navigateView('home'); $('#searchInput').focus();$('#feedSection').scrollIntoView({block:'start', behavior:motionEnabled()?'smooth':'auto'});}
     else closeSearch();
   });
   $('#searchInput').addEventListener('keydown', event => {
@@ -448,6 +521,7 @@
   $('#categoryFilter').addEventListener('change', renderPosts);
   $('#postForm').addEventListener('submit', async event => {
     event.preventDefault();const btn = $('#postSubmit'); btn.disabled=true;btn.textContent='กำลังส่ง...';
+    $('#postFormError').hidden = true;
     try {
       await api('add', {
         nickname:$('#postName').value,
@@ -456,21 +530,24 @@
         body:$('#postBody').value
       });
       $('#postForm').reset();$('#categoryFilter').value='';$('#searchInput').value='';state.search='';
-      switchView('home'); await loadPosts(); notify('เผยแพร่หัวข้อเรียบร้อยแล้ว');
-    } catch (error) {notify(error.message);}
-    finally {btn.disabled=false;btn.textContent='เผยแพร่ความคิดเห็น';}
+      navigateView('home'); await loadPosts(); notify('เผยแพร่หัวข้อเรียบร้อยแล้ว');
+    } catch (error) {$('#postFormError').textContent = error.message;$('#postFormError').hidden = false;$('#postFormError').focus();notify(error.message);}
+    finally {btn.disabled=false;btn.textContent='เผยแพร่หัวข้อ';}
   });
   $('#replyForm').addEventListener('submit', async event => {
     event.preventDefault(); if (!state.currentPost) return;
     const id = state.currentPost, btn=$('#replySubmit');btn.disabled=true;btn.textContent='กำลังส่ง...';
+    $('#replyFormError').hidden = true;
     try {
       await api('reply', {postId:id,nickname:$('#replyName').value,body:$('#replyBody').value});
       $('#replyForm').reset();await loadReplies(id);await loadPosts();notify('ส่งคำตอบเรียบร้อยแล้ว');
-    } catch (error) {notify(error.message);}
+    } catch (error) {$('#replyFormError').textContent = error.message;$('#replyFormError').hidden = false;$('#replyFormError').focus();notify(error.message);}
     finally {btn.disabled=false;btn.textContent='ส่งคำตอบ';}
   });
-  loadPosts();
+  window.addEventListener('popstate', applyRoute);
+  loadPosts().then(applyRoute);
 })();
 </script>
 </body>
 </html>
+
