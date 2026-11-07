@@ -79,8 +79,6 @@
     .back{border:0;background:#f1efff;color:#6656cf;border-radius:10px;padding:9px 14px;margin-bottom:18px}
     .detail-body{font-size:17px;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere;margin:18px 0 25px;color:#545363}
     .top-nav{justify-self:end;min-width:0}
-    .nav-toggle{display:none}
-    .nav-list{display:flex;align-items:center;gap:3px}
     .nav-list button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:8px 11px;border:0;border-radius:11px;background:transparent;color:#58556d;font-size:13px;font-weight:700;white-space:nowrap;transition:background-color .14s,color .14s}
     .nav-list button:hover{background:#e9e7fc;color:#5143be}
     .nav-list button.active{background:#dedaff;color:#4d3bb8}
@@ -90,7 +88,6 @@
       @keyframes tm-nav-select{from{transform:scale(.86)}to{transform:scale(1)}}
     }
     .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#282639;color:white;padding:12px 20px;border-radius:12px;z-index:100;box-shadow:0 12px 30px #0003;max-width:90vw;text-align:center}
-    @media(max-width:1150px){
       .nav-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:44px;min-height:44px;padding:8px 10px;border:1px solid #d8d4ef;border-radius:11px;background:#fff;color:#302c51;font-size:13px;font-weight:700}
       .nav-toggle[aria-expanded=true]{background:#dedaff;border-color:#bdb4fb}
       .nav-toggle .icon{width:21px;height:21px}
@@ -98,8 +95,8 @@
       .top-nav.open .nav-list{display:grid;gap:3px}
       .nav-list button{justify-content:flex-start;width:100%;min-height:48px;padding:10px 13px;font-size:14px}
       .nav-list .icon{width:21px;height:21px}
-    }
-    @media(prefers-reduced-motion:no-preference) and (max-width:1150px){.top-nav.open .nav-list{animation:tm-nav-open .18s cubic-bezier(.16,1,.3,1) both}}
+      .nav-toggle span{display:none}
+    @media(prefers-reduced-motion:no-preference){.top-nav.open .nav-list{animation:tm-nav-open .18s cubic-bezier(.16,1,.3,1) both}}
     @keyframes tm-nav-open{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
     .conversation-invite{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:clamp(56px,6vw,88px);padding:clamp(26px,3.8vw,48px);border-radius:20px;background:#eeecff}
     .conversation-invite h2{max-width:18ch;margin:0 0 9px;color:#25213d;font-size:clamp(25px,2.8vw,36px);line-height:1.25;letter-spacing:-.02em}
@@ -120,7 +117,7 @@
     .footer-bottom{max-width:1280px;margin:clamp(34px,5vw,60px) auto 0;padding-top:20px;border-top:1px solid #d3cede;color:#625c75;font-size:12px}
     @media(max-width:720px){
       :root{background:white}.site{margin:0;width:100%;max-width:none;border-radius:0;box-shadow:none}
-      .topbar{height:58px;padding:0 13px}.brand{font-size:23px}.icon-btn{width:44px;height:44px}.nav-toggle{min-height:44px;min-width:44px;padding:8px}.nav-toggle span{display:none}
+      .topbar{height:58px;padding:0 13px}.brand{font-size:23px}.icon-btn{width:44px;height:44px}.nav-toggle{min-height:44px;min-width:44px;padding:8px}
       .nav-list{right:12px}
       .search-panel{left:0;width:100%;padding:10px 14px}main{padding:13px 14px 38px}
       .hero{grid-template-columns:1fr;gap:0;min-height:auto;padding:21px 20px;border-radius:16px}
@@ -139,18 +136,12 @@
       .invite-actions button{width:100%}
       .site-footer{padding:43px 22px 25px}.footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px}
       .footer-about{grid-column:1/-1}.footer-brand{font-size:26px}.footer-bottom{margin-top:35px}
-      .toast{bottom:calc(84px + env(safe-area-inset-bottom))}
-      body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}
-      .bottom-nav{display:grid!important}
+      .toast{bottom:calc(20px + env(safe-area-inset-bottom))}
     }
     /* Short feedback stays attached to the action; content is visible immediately. */
     .post-action,.primary-btn,.secondary-btn,.back,.nav-toggle{transition:background-color .14s,border-color .14s,color .14s,box-shadow .14s,transform .14s cubic-bezier(.16,1,.3,1)}
     .post-action:active,.primary-btn:active,.secondary-btn:active,.back:active,.nav-toggle:active{transform:scale(.985)}
     .feed,.view{scroll-margin-top:88px}
-    .bottom-nav{display:none;position:fixed;inset:auto 0 0;grid-template-columns:repeat(4,1fr);z-index:60;background:#fff;border-top:1px solid #dedbea;padding:4px 4px calc(4px + env(safe-area-inset-bottom));box-shadow:0 -5px 24px #24204412}
-    .bottom-nav button{display:grid;justify-items:center;align-content:center;gap:2px;min-height:56px;border:0;background:transparent;color:#514b68;font-size:11px;font-weight:700;border-radius:10px}
-    .bottom-nav button.active{background:#f0eeff;color:#4735a8}
-    .bottom-nav .icon{width:22px;height:22px}
     .status-error{color:#9a253f;font-weight:600}
     @media(prefers-reduced-motion:no-preference){.toast:not([hidden]){animation:tm-toast-in .18s cubic-bezier(.16,1,.3,1) both}}
     @keyframes tm-toast-in{from{opacity:.7;transform:translate(-50%,5px)}to{opacity:1;transform:translate(-50%,0)}}
@@ -277,12 +268,7 @@
     <div class="footer-bottom">© TangMum v5 — ต่างความคิด ไม่ต่างคุณค่า</div>
   </footer>
 </div>
-<nav class="bottom-nav" aria-label="เมนูล่าง">
-  <button type="button" data-view="home" class="active" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg>หน้าแรก</button>
-  <button type="button" data-feed><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>บทสนทนา</button>
-  <button type="button" data-view="create"><svg class="icon" aria-hidden="true"><use href="#i-add"/></svg>ตั้งหัวข้อ</button>
-  <button type="button" data-view="saved"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>บันทึกไว้</button>
-</nav>
+
 <div role="status" class="toast" id="toast" hidden></div>
 <script>
 (() => {
@@ -301,6 +287,7 @@
     if (!views.includes(name)) return;
     history.pushState({tangmum:true}, '', location.pathname + (name === 'home' ? '' : '?view=' + name));
     state.currentPost = null;
+    document.title = 'TangMum | ทุกความคิดมีคุณค่า';
     switchView(name);
     const destination = $('#view-' + name);
     destination.setAttribute('tabindex', '-1');
@@ -335,7 +322,8 @@
   }
   function saveStars(set) {
     try { localStorage.setItem(savedKey, JSON.stringify([...set])); }
-    catch { notify('เบราว์เซอร์ไม่อนุญาตให้บันทึกดาว'); }
+    catch { notify('บันทึกไม่ได้ เบราว์เซอร์ไม่อนุญาตให้เก็บข้อมูล'); return false; }
+    return true;
   }
   function escapeHTML(value) {
     return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -366,7 +354,7 @@
     }
     state.active = name;
     for (const view of views) $('#view-' + view).hidden = name !== view;
-    document.querySelectorAll('.top-nav [data-view], .bottom-nav [data-view], .bottom-nav [data-feed]').forEach(btn => {
+    document.querySelectorAll('.top-nav [data-view]').forEach(btn => {
       const active = btn.dataset.view === (name === 'detail' ? 'home' : name);
       btn.classList.toggle('active', active);
       if (active) btn.setAttribute('aria-current','page'); else btn.removeAttribute('aria-current');
@@ -405,6 +393,10 @@
       '<div class="empty">ยังไม่มีหัวข้อที่ตรงกับการค้นหา ลองเริ่มต้นตั้งหัวข้อแรกได้เลย</div>';
   }
   function renderSaved() {
+    if (state.loadError) {
+      $('#savedList').innerHTML = '<div class="empty"><p class="status-error">' + escapeHTML(state.loadError) + '</p><button class="secondary-btn" data-retry-posts type="button">ลองอีกครั้ง</button></div>';
+      return;
+    }
     const set = stars();
     const list = state.posts.filter(post => set.has(post.id));
     $('#savedList').innerHTML = list.length ? list.map(cardHTML).join('') :
@@ -412,6 +404,11 @@
   }
   async function loadPosts() {
     state.loadError = '';
+    state.loading = true;
+    for (const selector of ['#postList','#savedList']) {
+      $(selector).setAttribute('aria-busy','true');
+      $(selector).innerHTML = '<p class="muted" role="status">กำลังโหลดหัวข้อ...</p>';
+    }
     try {
       const result = await api('list');
       state.posts = result.posts || [];
@@ -419,8 +416,11 @@
     } catch (error) {
       state.loadError = error.message;
       $('#postCount').textContent = 'เชื่อมต่อไม่สำเร็จ';
-      $('#postList').innerHTML = `<div class="empty">${escapeHTML(error.message)}<br><button class="secondary-btn" id="retryBtn" style="margin-top:12px">ลองอีกครั้ง</button></div>`;
-      $('#savedList').innerHTML = '<div class="empty"><p class="status-error">' + escapeHTML(error.message) + '</p><button class="secondary-btn" id="retryBtn" type="button">ลองอีกครั้ง</button></div>';
+      $('#postList').innerHTML = `<div class="empty">${escapeHTML(error.message)}<br><button class="secondary-btn" data-retry-posts style="margin-top:12px">ลองอีกครั้ง</button></div>`;
+      renderSaved();
+    } finally {
+      state.loading = false;
+      for (const selector of ['#postList','#savedList']) $(selector).setAttribute('aria-busy','false');
     }
   }
   async function openPost(id, updateUrl = true) {
@@ -437,6 +437,7 @@
       return;
     }
     state.currentPost = id;
+    $('#replyFormError').hidden = true;
     $('#repliesPanel').hidden = false;
     document.title = post.title + ' | TangMum';
     $('#detailPanel').innerHTML = `<div class="post-meta"><span class="tag">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
@@ -455,7 +456,7 @@
       $('#replyList').innerHTML = result.replies.length ? result.replies.map(reply =>
         `<div class="reply"><strong>${escapeHTML(reply.nickname)}</strong><time>${escapeHTML(reply.createdAt)}</time><p>${escapeHTML(reply.body)}</p></div>`).join('') :
         '<p class="muted">ยังไม่มีคำตอบ มาเป็นคนแรกที่ชวนคุยอย่างสร้างสรรค์กันเถอะ</p>';
-    } catch (error) { $('#replyList').innerHTML = '<p class="status-error">' + escapeHTML(error.message) + '</p><button type="button" class="secondary-btn" data-retry-replies>ลองโหลดคำตอบอีกครั้ง</button>'; }
+    } catch (error) { if (state.currentPost !== id) return; $('#replyList').innerHTML = '<p class="status-error">' + escapeHTML(error.message) + '</p><button type="button" class="secondary-btn" data-retry-replies>ลองโหลดคำตอบอีกครั้ง</button>'; }
   }
   document.addEventListener('click', async event => {
     const feedLink = event.target.closest('[data-feed]');
@@ -481,7 +482,8 @@
     if (star) {
       const set = stars(); const id = star.dataset.star;
       if (set.has(id)) set.delete(id); else set.add(id);
-      saveStars(set); renderPosts(); renderSaved();
+      if (!saveStars(set)) return;
+      renderPosts(); renderSaved();
       if (state.active === 'detail' && state.currentPost === id) {
         const post = state.posts.find(p => p.id === id);
         if (post) $('#detailPanel .star-btn').outerHTML = starButtonHTML(post);
@@ -489,7 +491,7 @@
       notify(set.has(id) ? 'บันทึกหัวข้อไว้แล้ว' : 'นำหัวข้อออกจากที่บันทึกแล้ว');
       return;
     }
-    if (event.target.id === 'retryBtn' || event.target.id === 'retryDetail') {await loadPosts();applyRoute();}
+    if (event.target.closest('[data-retry-posts]') || event.target.id === 'retryDetail') {await loadPosts();applyRoute();}
     if (event.target.closest('[data-retry-replies]') && state.currentPost) await loadReplies(state.currentPost);
   });
   $('#navToggle').addEventListener('click', () => {
