@@ -150,9 +150,13 @@
       *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}
     }
   </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/design.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">ข้ามไปเนื้อหา</a>
 <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.3"/><path d="m16.2 16.2 5 5"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4.5 6.5h15M4.5 12h15M4.5 17.5h15"/></symbol>
@@ -173,14 +177,14 @@
       <div class="nav-list" id="navList">
         <button type="button" data-view="home" class="active" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>หน้าแรก</span></button>
         <button type="button" class="mobile-create" data-view="create"><svg class="icon" aria-hidden="true"><use href="#i-add"/></svg><span>ตั้งหัวข้อของคุณ</span></button>
-        <button type="button" data-feed>หัวข้อทั้งหมด</button><button type="button" data-view="saved"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>บันทึกไว้</span></button>
+        <button type="button" data-view="saved"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>บันทึกไว้</span></button>
         <button type="button" data-view="about"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span>แนวทางของชุมชน</span></button>
       </div>
     </nav>
     <button class="primary-btn header-create" type="button" data-view="create">ตั้งหัวข้อของคุณ</button>
     <div class="search-panel" id="searchPanel" hidden><label class="search-label" for="searchInput">ค้นหาบทสนทนา</label><div class="search-control"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input id="searchInput" type="search" maxlength="90" placeholder="ค้นหาหัวข้อหรือความคิดเห็น..." aria-label="ค้นหาหัวข้อ"><button class="search-clear" type="button" id="searchClear" aria-label="ล้างคำค้น">ล้าง</button></div><p class="search-hint">ค้นจากหัวข้อ ความคิดเห็น หรือชื่อผู้เขียน</p></div>
   </header>
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="view" id="view-home">
       <div class="hero">
         <div>
@@ -188,7 +192,7 @@
           <p>ทุกความคิดเห็นมีเรื่องราวและเหตุผลของตัวเอง มาพูดคุย แลกเปลี่ยน และเข้าใจกันด้วยความเคารพ</p>
           <div class="hero-actions"><button class="primary-btn" type="button" data-feed>สำรวจบทสนทนา</button><button class="secondary-btn" type="button" data-view="create">ตั้งหัวข้อของคุณ</button></div>
         </div>
-        <div class="hero-art" aria-hidden="true"><div class="bubble a">•••</div><div class="bubble b">•••</div></div>
+        <div class="hero-art" aria-hidden="true"><div class="bubble a"><span class="chat-dots"><i></i><i></i><i></i></span></div><div class="bubble b"><span class="chat-dots"><i></i><i></i><i></i></span></div></div>
       </div>
       <div class="pillars">
         <article class="pillar">
@@ -219,10 +223,10 @@
         <p>อยากชวนคนอื่นคิดเรื่องอะไร? ตั้งคำถาม แบ่งปันเหตุผล และชวนพูดคุยอย่างเป็นมิตร</p>
         <form id="postForm">
           <p class="status-error" id="postFormError" role="alert" tabindex="-1" hidden></p>
-          <div class="field"><label for="postName">ชื่อที่แสดง (ไม่บังคับ)</label><input id="postName" maxlength="28" placeholder="เว้นว่างเพื่อใช้นามแฝง"></div>
-          <div class="field"><label for="postCategory">หมวดหมู่ *</label><select id="postCategory" required><option value="">เลือกหมวดหมู่</option><option>สังคม</option><option>การศึกษา</option><option>เทคโนโลยี</option><option>สิ่งแวดล้อม</option><option>ชีวิตประจำวัน</option></select></div>
-          <div class="field"><label for="postTitle">หัวข้อที่อยากชวนคุย *</label><input id="postTitle" required minlength="8" maxlength="90" placeholder="เช่น AI ควรมีบทบาทในการเรียนมากแค่ไหน?"></div>
-          <div class="field"><label for="postBody">ความคิดเห็นหรือเหตุผลของคุณ *</label><textarea id="postBody" required minlength="20" maxlength="1000" placeholder="ลองบอกมุมมอง เหตุผล หรือคำถามที่อยากให้ทุกคนช่วยกันคิด..."></textarea><span class="hint">20–1,000 ตัวอักษร กรุณาไม่เปิดเผยข้อมูลส่วนบุคคล</span></div>
+          <div class="field"><label for="postName">ชื่อที่แสดง <span class="optional-label">(ไม่บังคับ)</span></label><input id="postName" maxlength="28" placeholder="เว้นว่างเพื่อใช้นามแฝง"></div>
+          <div class="field"><label for="postCategory">หมวดหมู่ <span class="required-mark" aria-hidden="true">*</span></label><select id="postCategory" required><option value="">เลือกหมวดหมู่</option><option>สังคม</option><option>การศึกษา</option><option>เทคโนโลยี</option><option>สิ่งแวดล้อม</option><option>ชีวิตประจำวัน</option></select></div>
+          <div class="field"><label for="postTitle">หัวข้อที่อยากชวนคุย <span class="required-mark" aria-hidden="true">*</span></label><input id="postTitle" required minlength="8" maxlength="90" placeholder="เช่น AI ควรมีบทบาทในการเรียนมากแค่ไหน?"></div>
+          <div class="field"><label for="postBody">ความคิดเห็นหรือเหตุผลของคุณ <span class="required-mark" aria-hidden="true">*</span></label><textarea aria-describedby="postBodyHint" id="postBody" required minlength="20" maxlength="1000" placeholder="ลองบอกมุมมอง เหตุผล หรือคำถามที่อยากให้ทุกคนช่วยกันคิด..."></textarea><span class="hint" id="postBodyHint">20–1,000 ตัวอักษร กรุณาไม่เปิดเผยข้อมูลส่วนบุคคล</span></div>
           <div class="field"><label><input type="checkbox" id="postAgree" required style="width:auto;margin-right:6px"> ฉันจะเคารพผู้อื่น ไม่คุกคามหรือเผยแพร่ข้อมูลส่วนตัว</label></div>
           <div class="form-actions"><button type="button" class="secondary-btn" data-view="home">ยกเลิก</button><button class="primary-btn" type="submit" id="postSubmit">เผยแพร่หัวข้อ</button></div>
         </form>
@@ -240,8 +244,8 @@
         <div id="replyList"><p class="muted">กำลังโหลด...</p></div>
         <form id="replyForm">
           <p class="status-error" id="replyFormError" role="alert" tabindex="-1" hidden></p>
-          <div class="field"><label for="replyName">ชื่อที่แสดง (ไม่บังคับ)</label><input id="replyName" maxlength="28" placeholder="ผู้ใช้นิรนาม"></div>
-          <div class="field"><label for="replyBody">ร่วมแลกเปลี่ยนอย่างเคารพ *</label><textarea id="replyBody" required minlength="3" maxlength="650" style="min-height:105px" placeholder="คุณมีมุมมองอย่างไร?"></textarea></div>
+          <div class="field"><label for="replyName">ชื่อที่แสดง <span class="optional-label">(ไม่บังคับ)</span></label><input id="replyName" maxlength="28" placeholder="ผู้ใช้นิรนาม"></div>
+          <div class="field"><label for="replyBody">ร่วมแลกเปลี่ยนอย่างเคารพ <span class="required-mark" aria-hidden="true">*</span></label><textarea id="replyBody" required minlength="3" maxlength="650" style="min-height:105px" placeholder="คุณมีมุมมองอย่างไร?"></textarea></div>
           <div class="form-actions"><button class="primary-btn" type="submit" id="replySubmit">ส่งคำตอบ</button></div>
         </form>
       </div>
@@ -307,9 +311,7 @@
   function closeSearch() {
     $('#searchPanel').hidden = true;
     $('#searchToggle').setAttribute('aria-expanded', 'false');
-    $('#searchInput').value = '';
-    state.search = '';
-    renderPosts();
+
   }
 
   function stars() {
@@ -348,6 +350,7 @@
       window.scrollTo({top:0,behavior:'instant'});
       return;
     }
+    current?.getAnimations().forEach(animation => animation.cancel());
     destination.getAnimations().forEach(animation => animation.cancel());
     state.active = name;
     for (const view of views) $('#view-' + view).hidden = name !== view;
@@ -361,32 +364,45 @@
   }
   function starButtonHTML(post) {
     const isStar = stars().has(post.id);
-    return `<button type="button" class="post-action star-btn ${isStar ? 'on' : ''}" data-star="${escapeHTML(post.id)}" aria-pressed="${isStar}" aria-label="${isStar ? 'นำหัวข้อออกจากที่บันทึก' : 'บันทึกหัวข้อนี้'}">
+    return `<button type="button" class="post-action star-btn ${isStar ? 'on' : ''}" data-star="${escapeHTML(post.id)}" title="${isStar ? 'นำออกจากบันทึก' : 'บันทึกหัวข้อนี้'}" aria-pressed="${isStar}" aria-label="${isStar ? 'นำหัวข้อออกจากที่บันทึก' : 'บันทึกหัวข้อนี้'}">
       <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>${isStar ? 'บันทึกแล้ว' : 'บันทึก'}</span>
     </button>`;
   }
   function cardHTML(post) {
-    const preview = post.body.length > 185 ? post.body.slice(0, 185) + '…' : post.body;
+    const body = String(post.body || '');
+    const first = body.indexOf('มุมหนึ่ง:');
+    const second = first >= 0 ? body.indexOf('อีกมุมหนึ่ง:', first) : -1;
+    const intro = first >= 0 ? body.slice(0, first).trim() : '';
+    const viewpoint = first >= 0 ? body.slice(first + 'มุมหนึ่ง:'.length, second >= 0 ? second : undefined).trim() : body;
+    const shorten = text => text.length > 185 ? text.slice(0,185).trimEnd() + '…' : text;
+    const preview = shorten(viewpoint);
     return `<article class="post">
       <div class="post-meta"><span class="tag" data-category="${escapeHTML(post.category)}">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
       <h3><a href="${escapeHTML(postHref(post.id))}" data-open="${escapeHTML(post.id)}">${escapeHTML(post.title)}</a></h3>
 
+      ${intro ? `<p class="post-intro">${escapeHTML(shorten(intro))}</p>` : ''}
       <div class="perspective"><strong>มุมหนึ่ง</strong><p>${escapeHTML(preview)}</p></div><div class="post-bottom">
         <div class="post-byline"><span class="avatar" aria-hidden="true">T</span><span>โดย ${escapeHTML(post.nickname)}</span><span aria-hidden="true">•</span><span>${Number(post.replyCount)||0} คำตอบ</span></div>
         <div class="post-actions">
           ${starButtonHTML(post)}
           <a class="post-action card-link" href="${escapeHTML(postHref(post.id))}" data-open="${escapeHTML(post.id)}" aria-label="อ่านรายละเอียดหัวข้อ ${escapeHTML(post.title)}">อ่านต่อ <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></a>
-          <button type="button" class="post-action share-btn" data-share="${escapeHTML(post.id)}" aria-label="คัดลอกลิงก์หัวข้อ ${escapeHTML(post.title)}"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button>
+          <button type="button" class="post-action share-btn" title="คัดลอกลิงก์" data-share="${escapeHTML(post.id)}" aria-label="คัดลอกลิงก์หัวข้อ ${escapeHTML(post.title)}"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button>
         </div>
       </div>
     </article>`;
   }
   function renderPosts() {
+    const focusedCategory = document.activeElement?.closest('#categoryChips button')?.dataset.categoryFilter;
     const category = $('#categoryFilter').value;
     const word = state.search.trim().toLocaleLowerCase('th');
     const filtered = state.posts.filter(p => (!category || p.category === category) &&
       (!word || [p.title,p.body,p.nickname,p.category].join(' ').toLocaleLowerCase('th').includes(word)));
     $('#categoryChips').innerHTML = ['',...new Set(state.posts.map(post => post.category))].map(value => `<button type="button" data-category-filter="${escapeHTML(value)}" aria-pressed="${value === category}">${escapeHTML(value || 'ทั้งหมด')}</button>`).join('');
+    if (focusedCategory !== undefined) {
+      const active = [...$('#categoryChips').querySelectorAll('button')].find(button => button.dataset.categoryFilter === focusedCategory);
+      active?.focus({preventScroll:true});
+      active?.scrollIntoView({block:'nearest',inline:'nearest'});
+    }
     $('#postCount').textContent = `${filtered.length} หัวข้อ`;
     $('#postList').innerHTML = filtered.length ? filtered.map(cardHTML).join('') :
       '<div class="empty">ยังไม่มีหัวข้อที่ตรงกับการค้นหา ลองเริ่มต้นตั้งหัวข้อแรกได้เลย</div>';
@@ -442,7 +458,7 @@
     document.title = post.title + ' | TangMum';
     $('#detailPanel').innerHTML = `<div class="post-meta"><span class="tag" data-category="${escapeHTML(post.category)}">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
       <h1>${escapeHTML(post.title)}</h1><div class="muted small">เขียนโดย ${escapeHTML(post.nickname)}</div>
-      <div class="detail-body">${escapeHTML(post.body)}</div><div class="detail-actions">${starButtonHTML(post)}<button type="button" class="post-action share-btn" data-share="${escapeHTML(id)}">คัดลอกลิงก์</button></div>`;
+      <div class="detail-body">${escapeHTML(post.body)}</div><div class="detail-actions">${starButtonHTML(post)}<button type="button" class="post-action share-btn" title="คัดลอกลิงก์" data-share="${escapeHTML(id)}">คัดลอกลิงก์</button></div>`;
     $('#replyList').innerHTML = '<p class="muted">กำลังโหลดคำตอบ...</p>';
     switchView('detail');
     $('#detailPanel h1').setAttribute('tabindex', '-1');
@@ -518,7 +534,7 @@
     if (event.key === 'Escape') {event.preventDefault();closeSearch();$('#searchToggle').focus();}
   });
   $('#searchInput').addEventListener('input', event => {
-    if (state.active !== 'home') navigateView('home');
+    if (state.active !== 'home') { navigateView('home'); $('#searchInput').focus({preventScroll:true}); }
     state.search=event.target.value; renderPosts();
   });
   $('#searchClear').addEventListener('click', () => { $('#searchInput').value=''; state.search=''; renderPosts(); $('#searchInput').focus(); });
