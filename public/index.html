@@ -172,12 +172,13 @@
       <button class="nav-toggle" id="navToggle" type="button" aria-label="เปิดเมนูหลัก" aria-expanded="false" aria-controls="navList"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span>เมนู</span></button>
       <div class="nav-list" id="navList">
         <button type="button" data-view="home" class="active" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>หน้าแรก</span></button>
-        <button type="button" data-view="create"><svg class="icon" aria-hidden="true"><use href="#i-add"/></svg><span>ตั้งหัวข้อ</span></button>
-        <button type="button" data-view="saved"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>บันทึกไว้</span></button>
-        <button type="button" data-view="about"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span>อื่น ๆ</span></button>
+        <button type="button" class="mobile-create" data-view="create"><svg class="icon" aria-hidden="true"><use href="#i-add"/></svg><span>ตั้งหัวข้อของคุณ</span></button>
+        <button type="button" data-feed>หัวข้อทั้งหมด</button><button type="button" data-view="saved"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>บันทึกไว้</span></button>
+        <button type="button" data-view="about"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span>แนวทางของชุมชน</span></button>
       </div>
     </nav>
-    <div class="search-panel" id="searchPanel" hidden><input id="searchInput" type="search" maxlength="90" placeholder="ค้นหาหัวข้อหรือความคิดเห็น..." aria-label="ค้นหาหัวข้อ"></div>
+    <button class="primary-btn header-create" type="button" data-view="create">ตั้งหัวข้อของคุณ</button>
+    <div class="search-panel" id="searchPanel" hidden><label class="search-label" for="searchInput">ค้นหาบทสนทนา</label><div class="search-control"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input id="searchInput" type="search" maxlength="90" placeholder="ค้นหาหัวข้อหรือความคิดเห็น..." aria-label="ค้นหาหัวข้อ"><button class="search-clear" type="button" id="searchClear" aria-label="ล้างคำค้น">ล้าง</button></div><p class="search-hint">ค้นจากหัวข้อ ความคิดเห็น หรือชื่อผู้เขียน</p></div>
   </header>
   <main>
     <section class="view" id="view-home">
@@ -370,7 +371,7 @@
       <div class="post-meta"><span class="tag" data-category="${escapeHTML(post.category)}">${escapeHTML(post.category)}</span><span>${escapeHTML(post.createdAt)}</span></div>
       <h3><a href="${escapeHTML(postHref(post.id))}" data-open="${escapeHTML(post.id)}">${escapeHTML(post.title)}</a></h3>
 
-      <div class="perspective"><strong>มุมหนึ่ง</strong><p>${escapeHTML(preview)}</p></div><div class="perspective alternate"><strong>อีกมุมหนึ่ง</strong><p>ชวนอ่านและแลกเปลี่ยนมุมมองในบทสนทนา</p></div><div class="post-bottom">
+      <div class="perspective"><strong>มุมหนึ่ง</strong><p>${escapeHTML(preview)}</p></div><div class="post-bottom">
         <div class="post-byline"><span class="avatar" aria-hidden="true">T</span><span>โดย ${escapeHTML(post.nickname)}</span><span aria-hidden="true">•</span><span>${Number(post.replyCount)||0} คำตอบ</span></div>
         <div class="post-actions">
           ${starButtonHTML(post)}
@@ -510,15 +511,18 @@
   $('#searchToggle').addEventListener('click', () => {
     const panel = $('#searchPanel'); panel.hidden = !panel.hidden;
     $('#searchToggle').setAttribute('aria-expanded', String(!panel.hidden));
-    if (!panel.hidden) {closeNav();if (state.active !== 'home') navigateView('home'); $('#searchInput').focus();$('#feedSection').scrollIntoView({block:'start', behavior:motionEnabled()?'smooth':'auto'});}
+    if (!panel.hidden) {closeNav(); $('#searchInput').focus();}
     else closeSearch();
   });
   $('#searchInput').addEventListener('keydown', event => {
     if (event.key === 'Escape') {event.preventDefault();closeSearch();$('#searchToggle').focus();}
   });
   $('#searchInput').addEventListener('input', event => {
+    if (state.active !== 'home') navigateView('home');
     state.search=event.target.value; renderPosts();
   });
+  $('#searchClear').addEventListener('click', () => { $('#searchInput').value=''; state.search=''; renderPosts(); $('#searchInput').focus(); });
+  $('#searchPanel').addEventListener('keydown', event => { if (event.key === 'Enter') { event.preventDefault(); closeSearch(); if (state.active !== 'home') navigateView('home'); $('#feedSection').scrollIntoView({block:'start',behavior:motionEnabled()?'smooth':'auto'}); } });
   $('#categoryFilter').addEventListener('change', renderPosts);
   $('#postForm').addEventListener('submit', async event => {
     event.preventDefault();const btn = $('#postSubmit'); btn.disabled=true;btn.textContent='กำลังส่ง...';
